@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1 class="hero-name">星河绫</h1>
+  <p class="hero-desc">记录与分享 · 一些发在互联网上的文字</p>
+  <p class="hero-note">（个人简介待补充）</p>
+</section>
+
+<section class="posts">
+  <h2 class="section-title">最近帖子</h2>
+  {% for post in site.posts limit: 20 %}
+  <a class="post-card" href="{{ post.url }}">
+    <div class="post-card-head">
+      <h3>{{ post.title }}</h3>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+    </div>
+    {% if post.excerpt %}
+    <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+    {% endif %}
+    {% if post.tags %}
+    <div class="tags">
+      {% for tag in post.tags %}<span class="tag">#{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </a>
+  {% endfor %}
+</section>

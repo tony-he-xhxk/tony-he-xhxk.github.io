@@ -1,0 +1,17 @@
+# 站点配置
+title: 星河绫
+description: 个人主页 · 帖子存档 · 互联网漂流记
+lang: zh-CN
+timezone: Asia/Shanghai
+
+# 当前先用 GitHub 默认域名，域名实名通过后改为 https://xingheling.cn
+url: "https://tony-he-xhxk.github.io"
+baseurl: ""
+
+# 每页展示帖子数
+paginate: 10
+
+# 构建配置（保持零插件，确保 GitHub 云端构建成功）
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
