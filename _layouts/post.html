@@ -22,15 +22,18 @@ layout: default
     </a>
     {% endfor %}
   </div>
+  {% if page.source %}
+  <p class="gallery-note">以上图片来自【{{ page.source }}】，仅以介绍为目的，个人非商用，版权归原作者所有</p>
+  {% endif %}
   {% endif %}
 
   <div class="post-content">
     {{ content }}
   </div>
 
-  {% if page.source %}
+  {% if page.source_url %}
   <p class="post-source">
-    📎 原文发表于 <a href="{{ page.source }}" target="_blank" rel="noopener">{{ page.source }}</a>
+    📎 原文发表于 <a href="{{ page.source_url }}" target="_blank" rel="noopener">{{ page.source_url }}</a>
   </p>
   {% endif %}
 
