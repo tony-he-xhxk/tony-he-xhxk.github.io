@@ -254,6 +254,20 @@ a:hover { text-decoration: underline; }
   color: var(--muted);
   font-size: 13px;
 }
+.footer-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.footer-github:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-github .octocat { transition: transform .2s ease; }
+.footer-github:hover .octocat { transform: scale(1.15); }
 
 /* 移动端适配 */
 @media (max-width: 640px) {
