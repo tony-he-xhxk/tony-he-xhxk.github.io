@@ -9,7 +9,10 @@ layout: default
 
 <section class="projects">
   <h2 class="section-title">我的项目</h2>
-  <div class="projects-scroll">
+  <div class="carousel">
+    <button class="carousel-arrow carousel-prev" aria-label="上一个项目">‹</button>
+    <div class="carousel-viewport">
+      <div class="projects-track" id="projectsTrack">
 
     <div class="project-card project-card-split">
       <a class="project-info" href="https://prti.xingheling.cn" target="_blank" rel="noopener">
@@ -44,7 +47,11 @@ layout: default
       <div class="project-cta">GitHub<span class="arrow">→</span></div>
     </a>
 
+      </div>
+    </div>
+    <button class="carousel-arrow carousel-next" aria-label="下一个项目">›</button>
   </div>
+  <div class="carousel-dots" id="projectsDots"></div>
 </section>
 
 <section class="posts">
