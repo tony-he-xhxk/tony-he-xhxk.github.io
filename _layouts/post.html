@@ -14,6 +14,16 @@ layout: default
     </div>
   </header>
 
+  {% if page.images %}
+  <div class="post-gallery">
+    {% for img in page.images %}
+    <a class="gallery-item" href="{{ img.src | relative_url }}" target="_blank" rel="noopener">
+      <img src="{{ img.src | relative_url }}" alt="{{ img.alt | default: page.title }}" loading="lazy">
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
   <div class="post-content">
     {{ content }}
   </div>
