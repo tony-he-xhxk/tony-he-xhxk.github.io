@@ -259,8 +259,27 @@ a:hover { text-decoration: underline; }
   font-size: 13px;
 }
 
-/* 移动端微调 */
-@media (max-width: 480px) {
+/* 移动端适配 */
+@media (max-width: 640px) {
   .hero-name { font-size: 28px; }
   .post { padding: 18px 16px; }
+
+  /* 轮播：箭头缩小，不挤压内容 */
+  .carousel { gap: 6px; }
+  .carousel-arrow { width: 32px; height: 32px; font-size: 18px; }
+
+  /* 卡片：缩小内边距，PRTI 改回上下布局，双按钮横排占满 */
+  .project-card { padding: 20px 18px; }
+  .project-card-split {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .project-actions { flex-direction: row; }
+  .project-actions .project-cta {
+    flex: 1;
+    text-align: center;
+    padding: 10px 12px;
+  }
+  .project-card-split .project-info p { margin-bottom: 12px; }
 }
