@@ -4,8 +4,8 @@ description: 个人主页 · 帖子存档 · 互联网漂流记
 lang: zh-CN
 timezone: Asia/Shanghai
 
-# 当前先用 GitHub 默认域名，域名实名通过后改为 https://xingheling.cn
-url: "https://tony-he-xhxk.github.io"
+# 正式域名（已绑定 GitHub Pages，Enforce HTTPS 已开启）
+url: "https://xingheling.cn"
 baseurl: ""
 
 # 每页展示帖子数
