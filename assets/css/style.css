@@ -139,13 +139,9 @@ a:hover { text-decoration: underline; }
 }
 .project-cta .arrow { margin-left: 4px; }
 
-/* PRTI 特殊：左右分栏 + 右侧竖排双按钮 */
+/* PRTI 特殊：统一上下布局，底部横排双按钮 */
 .project-card-split {
   flex: 0 0 100%;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-  padding: 24px 26px;
 }
 .project-card-split .project-info {
   display: flex;
@@ -159,7 +155,7 @@ a:hover { text-decoration: underline; }
 .project-card-split .project-info p { margin-bottom: 12px; }
 .project-actions {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   flex-shrink: 0;
 }
@@ -268,18 +264,11 @@ a:hover { text-decoration: underline; }
   .carousel { gap: 6px; }
   .carousel-arrow { width: 32px; height: 32px; font-size: 18px; }
 
-  /* 卡片：缩小内边距，PRTI 改回上下布局，双按钮横排占满 */
+  /* 卡片：缩小内边距；按钮均分占满 */
   .project-card { padding: 20px 18px; }
-  .project-card-split {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
-  }
-  .project-actions { flex-direction: row; }
   .project-actions .project-cta {
     flex: 1;
     text-align: center;
     padding: 10px 12px;
   }
-  .project-card-split .project-info p { margin-bottom: 12px; }
 }
