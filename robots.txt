@@ -1,0 +1,24 @@
+# 星河绫个人主页 robots.txt
+# 允许搜索引擎收录，禁止 AI 训练爬虫抓取内容用于训练
+# 注：robots.txt 为君子协定，仅约束遵守规范的爬虫
+
+# 搜索引擎：欢迎收录
+User-agent: *
+Allow: /
+
+# AI 训练爬虫：禁止抓取
+User-agent: GPTBot
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: PerplexityBot
+Disallow: /
+
+# 站点地图
+Sitemap: https://xingheling.cn/sitemap.xml
