@@ -4,13 +4,13 @@ title: 我对 DS Harness 进行了轻量测试，结果如何？
 date: 2026-08-14
 tags: [技术分享, 水]
 images:
-  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-1.png
+  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-1.webp
     alt: DS Harness 测试数据截图 1
-  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-2.png
+  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-2.webp
     alt: DS Harness 测试数据截图 2
-  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-3.png
+  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-3.webp
     alt: DS Harness 前端测试页面截图
-  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-4.png
+  - src: /assets/images/posts/2026-08-14-DSHarness/dsh-4.webp
     alt: DS Harness 前端测试页面截图
 ---
 

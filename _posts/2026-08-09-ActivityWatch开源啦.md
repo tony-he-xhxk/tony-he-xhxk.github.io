@@ -4,9 +4,9 @@ title: ActivityWatch AI 智能分类+自包含看板开源啦！🎉
 date: 2026-08-09
 tags: [VibeCoding, 电脑时间监测软件, 实用工具分享]
 images:
-  - src: /assets/images/posts/2026-08-09-ActivityWatch/aw-1.png
+  - src: /assets/images/posts/2026-08-09-ActivityWatch/aw-1.webp
     alt: ActivityWatch AI 分类器界面截图
-  - src: /assets/images/posts/2026-08-09-ActivityWatch/aw-2.png
+  - src: /assets/images/posts/2026-08-09-ActivityWatch/aw-2.webp
     alt: ActivityWatch 看板演示截图
 ---
 
