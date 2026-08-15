@@ -62,24 +62,36 @@ a:hover { text-decoration: underline; }
 .hero-desc { color: var(--text); font-size: 16px; }
 .hero-note { color: var(--muted); font-size: 13px; margin-top: 8px; }
 
-/* PRTI 引流大卡片 */
-.project-card {
+/* 项目卡片横向滚动区 */
+.projects { margin: 28px 0 40px; }
+.projects-scroll {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin: 28px 0 40px;
-  padding: 30px 32px;
-  border-radius: 18px;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.projects-scroll::-webkit-scrollbar { height: 6px; }
+.projects-scroll::-webkit-scrollbar-thumb { background: #bcdcda; border-radius: 999px; }
+.projects-scroll::-webkit-scrollbar-track { background: transparent; }
+
+.project-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+  border-radius: 16px;
   background: linear-gradient(135deg, #2bb3a6, #177a70);
   color: #fff;
   text-decoration: none;
-  box-shadow: 0 10px 28px rgba(35, 151, 140, 0.25);
+  box-shadow: 0 10px 28px rgba(35, 151, 140, 0.2);
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .project-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 34px rgba(35, 151, 140, 0.35);
+  box-shadow: 0 14px 34px rgba(35, 151, 140, 0.32);
   text-decoration: none;
 }
 .project-badge {
@@ -88,25 +100,60 @@ a:hover { text-decoration: underline; }
   background: rgba(255, 255, 255, 0.2);
   padding: 3px 12px;
   border-radius: 999px;
+  align-self: flex-start;
   margin-bottom: 12px;
 }
-.project-info h2 { font-size: 22px; margin: 0 0 8px; color: #fff; }
-.project-info p { font-size: 14px; margin: 0 0 14px; color: rgba(255, 255, 255, 0.92); line-height: 1.6; max-width: 480px; }
-.project-personas { display: flex; gap: 8px; flex-wrap: wrap; }
-.project-personas span { font-size: 12px; background: rgba(255, 255, 255, 0.16); padding: 4px 11px; border-radius: 999px; }
+.project-card h3 { font-size: 18px; color: #fff; margin: 0 0 6px; }
+.project-card p { font-size: 13px; color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0 0 14px; flex-grow: 1; }
+.project-personas { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.project-personas span { font-size: 11px; background: rgba(255, 255, 255, 0.16); padding: 3px 9px; border-radius: 999px; }
 .project-cta {
-  flex-shrink: 0;
+  align-self: flex-start;
+  display: inline-block;
+  text-align: center;
   background: #fff;
   color: #177a70;
   font-weight: 700;
-  padding: 13px 22px;
-  border-radius: 12px;
-  font-size: 15px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 14px;
   white-space: nowrap;
 }
-.project-cta .arrow { margin-left: 6px; }
-@media (max-width: 560px) {
-  .project-card { flex-direction: column; align-items: flex-start; padding: 24px 22px; }
+.project-cta .arrow { margin-left: 4px; }
+
+/* PRTI 特殊：左右分栏 + 右侧竖排双按钮 */
+.project-card-split {
+  flex: 0 0 470px;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 26px;
+}
+.project-card-split .project-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+  color: #fff;
+  text-decoration: none;
+}
+.project-card-split .project-info:hover { text-decoration: none; }
+.project-card-split .project-info p { margin-bottom: 12px; }
+.project-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.project-cta-gh {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+}
+.project-cta-gh:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  text-decoration: none;
 }
 
 /* 帖子列表 */
