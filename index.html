@@ -74,8 +74,11 @@ layout: default
 </section>
 
 <section class="posts">
-  <h2 class="section-title">最近帖子</h2>
-  {% for post in site.posts limit: 20 %}
+  <div class="section-head">
+    <h2 class="section-title">最近帖子</h2>
+    <a class="section-more" href="{{ '/posts/' | relative_url }}">全部帖子 →</a>
+  </div>
+  {% for post in site.posts limit: 3 %}
   <a class="post-card" href="{{ post.url }}">
     <div class="post-card-head">
       <h3>{{ post.title }}</h3>

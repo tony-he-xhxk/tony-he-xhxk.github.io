@@ -1,0 +1,67 @@
+---
+layout: default
+title: 全部帖子
+permalink: /posts/
+---
+<article class="page">
+  <h1>全部帖子</h1>
+
+  <div class="search-box">
+    <input type="search" id="postSearch" placeholder="搜索帖子标题或标签…（模糊匹配）" autocomplete="off">
+    <span class="search-count" id="searchCount"></span>
+  </div>
+
+  <div class="posts" id="postList">
+    {% for post in site.posts %}
+    <a class="post-card" href="{{ post.url }}" data-title="{{ post.title | escape }}" data-tags="{{ post.tags | join: ' ' | escape }}">
+      <div class="post-card-head">
+        <h3>{{ post.title }}</h3>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      </div>
+      {% if post.excerpt %}
+      <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      {% endif %}
+      {% if post.tags %}
+      <div class="tags">
+        {% for tag in post.tags %}<span class="tag">#{{ tag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+
+  <p class="search-empty" id="searchEmpty" style="display:none">没有找到匹配「<span id="searchEmptyQ"></span>」的帖子</p>
+</article>
+
+<script>
+(function () {
+  var input = document.getElementById('postSearch');
+  var list = document.getElementById('postList');
+  var count = document.getElementById('searchCount');
+  var empty = document.getElementById('searchEmpty');
+  var emptyQ = document.getElementById('searchEmptyQ');
+  var cards = Array.prototype.slice.call(list.querySelectorAll('.post-card'));
+  var total = cards.length;
+
+  function update() {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function (card) {
+      var hay = (card.getAttribute('data-title') + ' ' + card.getAttribute('data-tags')).toLowerCase();
+      var hit = q === '' || hay.indexOf(q) !== -1;
+      card.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    if (count) {
+      count.textContent = q === '' ? ('共 ' + total + ' 篇') : ('匹配 ' + shown + ' / ' + total + ' 篇');
+    }
+    if (empty && emptyQ) {
+      emptyQ.textContent = input.value.trim();
+      empty.style.display = (q !== '' && shown === 0) ? '' : 'none';
+    }
+  }
+
+  input.addEventListener('input', update);
+  update();
+})();
+</script>
