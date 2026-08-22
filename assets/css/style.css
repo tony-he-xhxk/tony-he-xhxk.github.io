@@ -262,6 +262,45 @@ a:hover { text-decoration: underline; }
   text-align: center;
 }
 
+/* 分页 */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+.page-btn {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--accent-dark);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.page-btn:hover { border-color: var(--accent); background: #e6fffb; }
+.page-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+.page-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.page-dots {
+  color: var(--muted);
+  padding: 0 2px;
+  font-size: 14px;
+}
+
 .posts { display: flex; flex-direction: column; gap: 14px; }
 
 .post-card {

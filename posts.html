@@ -30,38 +30,109 @@ permalink: /posts/
     {% endfor %}
   </div>
 
+  <nav class="pagination" id="pagination" aria-label="分页"></nav>
+
   <p class="search-empty" id="searchEmpty" style="display:none">没有找到匹配「<span id="searchEmptyQ"></span>」的帖子</p>
 </article>
 
 <script>
 (function () {
+  var PER_PAGE = 10;
   var input = document.getElementById('postSearch');
   var list = document.getElementById('postList');
   var count = document.getElementById('searchCount');
   var empty = document.getElementById('searchEmpty');
   var emptyQ = document.getElementById('searchEmptyQ');
+  var pager = document.getElementById('pagination');
   var cards = Array.prototype.slice.call(list.querySelectorAll('.post-card'));
   var total = cards.length;
+  var q = '';
+  var page = 1;
 
-  function update() {
-    var q = input.value.trim().toLowerCase();
-    var shown = 0;
-    cards.forEach(function (card) {
+  function getFiltered() {
+    if (q === '') return cards;
+    return cards.filter(function (card) {
       var hay = (card.getAttribute('data-title') + ' ' + card.getAttribute('data-tags')).toLowerCase();
-      var hit = q === '' || hay.indexOf(q) !== -1;
-      card.style.display = hit ? '' : 'none';
-      if (hit) shown++;
+      return hay.indexOf(q) !== -1;
     });
+  }
+
+  /* 生成带省略号的页码序列，如 1 … 4 5 6 … 12 */
+  function pageList(current, last) {
+    var set = new Set([1, last, current - 1, current, current + 1]);
+    var arr = [];
+    for (var i = 1; i <= last; i++) if (set.has(i)) arr.push(i);
+    var out = [];
+    var prev = 0;
+    arr.forEach(function (p) {
+      if (p - prev > 1) out.push('…');
+      out.push(p);
+      prev = p;
+    });
+    return out;
+  }
+
+  function render() {
+    var filtered = getFiltered();
+    var shown = filtered.length;
+    var last = Math.max(1, Math.ceil(shown / PER_PAGE));
+    if (page > last) page = last;
+
+    /* 显示当前页切片 */
+    cards.forEach(function (card) { card.style.display = 'none'; });
+    var start = (page - 1) * PER_PAGE;
+    filtered.slice(start, start + PER_PAGE).forEach(function (card) { card.style.display = ''; });
+
+    /* 计数 */
     if (count) {
-      count.textContent = q === '' ? ('共 ' + total + ' 篇') : ('匹配 ' + shown + ' / ' + total + ' 篇');
+      count.textContent = (q === '' ? ('共 ' + total + ' 篇') : ('匹配 ' + shown + ' / ' + total + ' 篇')) + ' · 第 ' + page + '/' + last + ' 页';
     }
+
+    /* 空结果 */
     if (empty && emptyQ) {
       emptyQ.textContent = input.value.trim();
       empty.style.display = (q !== '' && shown === 0) ? '' : 'none';
     }
+
+    /* 分页按钮 */
+    if (!pager) return;
+    pager.innerHTML = '';
+    if (last <= 1) return;
+
+    var prevBtn = document.createElement('button');
+    prevBtn.className = 'page-btn' + (page === 1 ? ' disabled' : '');
+    prevBtn.textContent = '‹';
+    prevBtn.addEventListener('click', function () { if (page > 1) { page--; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    pager.appendChild(prevBtn);
+
+    pageList(page, last).forEach(function (p) {
+      if (p === '…') {
+        var dot = document.createElement('span');
+        dot.className = 'page-dots';
+        dot.textContent = '…';
+        pager.appendChild(dot);
+        return;
+      }
+      var btn = document.createElement('button');
+      btn.className = 'page-btn' + (p === page ? ' active' : '');
+      btn.textContent = p;
+      btn.addEventListener('click', function () { page = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      pager.appendChild(btn);
+    });
+
+    var nextBtn = document.createElement('button');
+    nextBtn.className = 'page-btn' + (page === last ? ' disabled' : '');
+    nextBtn.textContent = '›';
+    nextBtn.addEventListener('click', function () { if (page < last) { page++; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    pager.appendChild(nextBtn);
   }
 
-  input.addEventListener('input', update);
-  update();
+  input.addEventListener('input', function () {
+    q = input.value.trim().toLowerCase();
+    page = 1;
+    render();
+  });
+
+  render();
 })();
 </script>
