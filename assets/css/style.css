@@ -226,8 +226,7 @@ a:hover { text-decoration: underline; }
 
 /* 搜索框（全部帖子页） */
 .search-box {
-  position: relative;
-  margin: 14px 0 18px;
+  margin: 14px 0 4px;
 }
 .search-box input[type="search"] {
   width: 100%;
@@ -246,14 +245,10 @@ a:hover { text-decoration: underline; }
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(43, 179, 166, 0.12);
 }
-.search-count {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+.search-meta {
+  margin: 6px 2px 16px;
   font-size: 12px;
   color: var(--muted);
-  pointer-events: none;
 }
 .search-empty {
   margin-top: 20px;
