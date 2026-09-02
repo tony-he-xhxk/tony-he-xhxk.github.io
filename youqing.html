@@ -10,6 +10,11 @@ permalink: /youqing/
     <p class="yq-tip">绿色网址都是可以点的喵！</p>
   </header>
 
+  <div class="search-box">
+    <input type="search" id="yqSearch" placeholder="搜索站点标题…（模糊匹配）" autocomplete="off">
+  </div>
+  <div class="search-meta"><span class="search-count" id="yqSearchCount"></span></div>
+
   <section class="yq-sec">
     <h2>长期有效</h2>
 
@@ -129,6 +134,8 @@ permalink: /youqing/
         </li>
       </ul>
     </div>
+
+    <p class="search-empty" id="yqEmptyLong" style="display:none">未找到符合条件的条目</p>
   </section>
 
   <section class="yq-sec">
@@ -164,7 +171,63 @@ permalink: /youqing/
         <div class="yq-urls"><a class="yq-url" href="https://jwb.bit.edu.cn//jsfw/xjgl_8/tzgg__8/d0fd60bd4f874f2c9c199e3eed89ca1c.htm" target="_blank" rel="noopener">https://jwb.bit.edu.cn//jsfw/xjgl_8/tzgg__8/d0fd60bd4f874f2c9c199e3eed89ca1c.htm</a></div>
       </li>
     </ul>
+
+    <p class="search-empty" id="yqEmptyTimed" style="display:none">未找到符合条件的条目</p>
   </section>
 
   <p class="yq-back"><a href="{{ '/' | relative_url }}">← 返回首页</a></p>
 </article>
+
+<script>
+(function () {
+  var input = document.getElementById('yqSearch');
+  var count = document.getElementById('yqSearchCount');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.yq-sec'));
+
+  /* 收集全部条目并缓存标题 */
+  var all = [];
+  secs.forEach(function (sec) {
+    Array.prototype.slice.call(sec.querySelectorAll('.yq-item')).forEach(function (item) {
+      var nameEl = item.querySelector('.yq-name');
+      item._title = nameEl ? nameEl.textContent : '';
+      all.push(item);
+    });
+  });
+  var total = all.length;
+
+  function render() {
+    var q = input.value.trim().toLowerCase();
+    var matchedTotal = 0;
+
+    secs.forEach(function (sec) {
+      var items = Array.prototype.slice.call(sec.querySelectorAll('.yq-item'));
+      var matched = 0;
+
+      items.forEach(function (item) {
+        var hit = q === '' || item._title.toLowerCase().indexOf(q) !== -1;
+        item.style.display = hit ? '' : 'none';
+        if (hit) matched++;
+      });
+
+      /* 空分组（仅校内/仅校外/校内、校外）整组隐藏 */
+      Array.prototype.slice.call(sec.querySelectorAll('.yq-cat')).forEach(function (cat) {
+        var vis = Array.prototype.some.call(cat.querySelectorAll('.yq-item'), function (x) {
+          return x.style.display !== 'none';
+        });
+        cat.style.display = vis ? '' : 'none';
+      });
+
+      /* 容器空态：仅在有搜索词且本容器无命中时显示 */
+      var empty = sec.querySelector('.search-empty');
+      if (empty) empty.style.display = (q !== '' && matched === 0) ? '' : 'none';
+
+      matchedTotal += matched;
+    });
+
+    count.textContent = q === '' ? ('共 ' + total + ' 条') : ('匹配 ' + matchedTotal + ' / ' + total + ' 条');
+  }
+
+  input.addEventListener('input', render);
+  render();
+})();
+</script>

@@ -415,6 +415,8 @@ a:hover { text-decoration: underline; }
   color: var(--accent-dark);
 }
 .yq-sec { margin-top: 26px; }
+/* youqing：搜索计数行下方紧跟的首个区块收紧间距 */
+.youqing > .yq-sec:first-of-type { margin-top: 4px; }
 .yq-sec h2 {
   font-size: 17px;
   color: var(--accent-dark);
