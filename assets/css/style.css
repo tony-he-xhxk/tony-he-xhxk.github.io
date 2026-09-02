@@ -403,6 +403,17 @@ a:hover { text-decoration: underline; }
   color: var(--muted);
   line-height: 1.8;
 }
+.yq-tip {
+  display: inline-block;
+  margin-top: 12px;
+  background: #dcf3ef;
+  border: 1px solid #a8dcd4;
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
 .yq-sec { margin-top: 26px; }
 .yq-sec h2 {
   font-size: 17px;
