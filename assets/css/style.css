@@ -484,6 +484,10 @@ a:hover { text-decoration: underline; }
   .yq-hero h1 { font-size: 26px; }
   .yq-item { padding: 9px 12px; }
 
+  /* 导航 4 项收紧间距 */
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 13px; }
+
   /* 轮播：箭头缩小，不挤压内容 */
   .carousel { gap: 6px; }
   .carousel-arrow { width: 32px; height: 32px; font-size: 18px; }
