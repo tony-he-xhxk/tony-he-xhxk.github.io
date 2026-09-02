@@ -1,0 +1,4 @@
+# 内部开发指南，不入库（避免被 Jekyll 发布为公开页面）
+友情网址.txt
+# 本地预览文件，不入库
+youqing-preview.html

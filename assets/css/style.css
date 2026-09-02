@@ -388,10 +388,101 @@ a:hover { text-decoration: underline; }
 .footer-github .octocat { transition: transform .2s ease; }
 .footer-github:hover .octocat { transform: scale(1.15); }
 
+/* ===== 友情网址页 ===== */
+.youqing {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px 22px;
+}
+.yq-hero { text-align: center; padding: 6px 0 14px; }
+.yq-hero h1 { font-size: 30px; color: var(--accent-dark); letter-spacing: 2px; }
+.yq-credit {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.yq-sec { margin-top: 26px; }
+.yq-sec h2 {
+  font-size: 17px;
+  color: var(--accent-dark);
+  border-left: 4px solid var(--accent);
+  padding-left: 10px;
+  line-height: 1.4;
+}
+.yq-cat { margin-top: 16px; }
+.yq-cat h3 {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.yq-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.yq-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.yq-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.yq-urls {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.yq-url {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: Consolas, Menlo, "Courier New", monospace;
+  font-size: 12.5px;
+  color: var(--accent-dark);
+  word-break: break-all;
+  line-height: 1.6;
+}
+.yq-seq {
+  flex-shrink: 0;
+  font-family: "PingFang SC", "Microsoft Yahei", system-ui, sans-serif;
+  font-size: 11px;
+  background: #e6fffb;
+  border-radius: 5px;
+  padding: 1px 7px;
+}
+.yq-alert {
+  margin: 14px 0 12px;
+  background: #fff6df;
+  border: 1px solid #eeda9f;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8a6d1a;
+  line-height: 1.6;
+}
+.yq-back {
+  margin-top: 26px;
+  font-size: 13px;
+}
+.yq-back a { color: var(--muted); }
+
 /* 移动端适配 */
 @media (max-width: 640px) {
   .hero-name { font-size: 28px; }
   .post { padding: 18px 16px; }
+  .youqing { padding: 20px 16px; }
+  .yq-hero h1 { font-size: 26px; }
+  .yq-item { padding: 9px 12px; }
 
   /* 轮播：箭头缩小，不挤压内容 */
   .carousel { gap: 6px; }
