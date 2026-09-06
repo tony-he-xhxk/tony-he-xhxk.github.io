@@ -3,5 +3,8 @@
 # 本地预览文件，不入库
 youqing-preview.html
 _preview_*.html
-# 专栏信息源目录，不入库（站点自建 zhuanlan/ 与 assets/images/zhuanlan/）
-/专栏/
+# 专栏信息源目录，不入库（仅评测数据.txt 例外入库，供 GitHub Actions 解析）
+/专栏/*
+!/专栏/2-美式咖啡横评/
+/专栏/2-美式咖啡横评/*
+!/专栏/2-美式咖啡横评/评测数据.txt

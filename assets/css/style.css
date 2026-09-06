@@ -564,3 +564,117 @@ a:hover { text-decoration: underline; }
     padding: 10px 12px;
   }
 }
+
+/* ===== 美式咖啡横评 ===== */
+.cf-disclaimer {
+  font-size: 16.5px;
+  color: #d64545;
+  line-height: 1.85;
+  margin: 0 0 4px;
+}
+.cf-regions { margin-top: 18px; }
+.cf-loading {
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+  margin: 24px 0;
+}
+.cf-region { margin: 10px 0 30px; }
+.cf-region:last-child { margin-bottom: 0; }
+.cf-region-title {
+  font-size: 17px;
+  color: var(--accent-dark);
+  border-left: 4px solid var(--accent);
+  padding-left: 10px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.cf-cards { display: flex; flex-direction: column; gap: 14px; }
+.cf-card {
+  background: #fbfefd;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.cf-card-name {
+  font-size: 17px;
+  color: var(--accent-dark);
+  margin: 0 0 4px;
+}
+.cf-rv + .cf-rv {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+.cf-rv-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.cf-rv-date {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 6px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+.cf-rv-cfg { font-size: 12.5px; color: var(--muted); }
+.cf-rv-cmt {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.75;
+  margin: 12px 0 0;
+}
+
+/* 热量 / 评分 横条 */
+.bar {
+  position: relative;
+  height: 26px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 7px;
+}
+.bar-track {
+  position: absolute;
+  inset: 0;
+  background: var(--tk, rgba(31, 45, 61, 0.08));
+}
+.bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--fl, rgba(31, 45, 61, 0.35));
+  border-radius: 999px;
+}
+.bar-txt-l,
+.bar-txt-r {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  z-index: 1;
+  line-height: 1;
+  white-space: nowrap;
+}
+.bar-txt-l { left: 12px; }
+.bar-txt-r { right: 12px; }
+
+/* 热量等级 */
+.bar-kcal.lvl-high    { --tk: rgba(242, 139, 130, .26); --fl: #f28b82; }
+.bar-kcal.lvl-midhigh { --tk: rgba(253, 216, 53, .30);  --fl: #fdd835; }
+.bar-kcal.lvl-midlow  { --tk: rgba(165, 214, 167, .32); --fl: #a5d6a7; }
+.bar-kcal.lvl-low     { --tk: rgba(102, 187, 106, .26); --fl: #66bb6a; }
+
+/* 评分等级 */
+.bar-score.lvl-top   { --tk: rgba(67, 160, 71, .28);  --fl: #43a047; }
+.bar-score.lvl-great { --tk: rgba(165, 214, 167, .32); --fl: #a5d6a7; }
+.bar-score.lvl-upper { --tk: rgba(253, 216, 53, .30);  --fl: #fdd835; }
+.bar-score.lvl-npc   { --tk: rgba(255, 183, 77, .30);  --fl: #ffb74d; }
+.bar-score.lvl-dead  { --tk: rgba(239, 154, 154, .30); --fl: #ef9a9a; }

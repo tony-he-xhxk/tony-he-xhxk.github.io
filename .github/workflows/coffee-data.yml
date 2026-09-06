@@ -1,0 +1,33 @@
+name: Sync coffee review data
+
+on:
+  push:
+    paths:
+      - '专栏/2-美式咖啡横评/评测数据.txt'
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  parse-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Parse review data to JSON
+        run: python3 tools/parse_coffee.py
+
+      - name: Commit and push updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/coffee_reviews.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(coffee): sync review data from source txt"
+            git push origin HEAD:main
+          fi
