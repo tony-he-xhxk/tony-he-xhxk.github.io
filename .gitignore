@@ -2,3 +2,6 @@
 友情网址.txt
 # 本地预览文件，不入库
 youqing-preview.html
+_preview_*.html
+# 专栏信息源目录，不入库（站点自建 zhuanlan/ 与 assets/images/zhuanlan/）
+/专栏/

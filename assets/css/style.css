@@ -298,6 +298,48 @@ a:hover { text-decoration: underline; }
 
 .posts { display: flex; flex-direction: column; gap: 14px; }
 
+/* 专栏 */
+.zhuanlan { margin: 8px 0 36px; }
+.zl-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.zl-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 18px;
+  color: var(--text);
+  transition: all .2s ease;
+  min-height: 96px;
+}
+.zl-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(43, 179, 166, 0.12);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.zl-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin: 0;
+  text-align: center;
+}
+.zl-card.disabled,
+.zl-card[href="#"] {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+@media (max-width: 560px) {
+  .zl-grid { grid-template-columns: 1fr; }
+}
+
 .post-card {
   display: block;
   background: var(--card);
@@ -355,6 +397,15 @@ a:hover { text-decoration: underline; }
 .post-content pre { background: #f0fffd; color: #1f2d3d; padding: 14px; border-radius: 10px; overflow-x: auto; margin-bottom: 14px; border: 1px solid var(--border); }
 .post-content pre code { background: none; padding: 0; color: inherit; }
 .post-content img { max-width: 100%; border-radius: 8px; }
+/* 专栏文章内嵌图：单独成段、居中显示，竖屏截图限高以免撑高内容 */
+.zl-content .post-content p > img:only-child,
+.zl-content .post-content > img {
+  display: block;
+  margin: 18px auto;
+  max-height: 620px;
+  width: auto;
+  box-shadow: 0 4px 18px rgba(31, 45, 61, 0.12);
+}
 .post-source { margin-top: 18px; font-size: 13px; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 14px; }
 
 /* 上一篇/下一篇/返回 */
