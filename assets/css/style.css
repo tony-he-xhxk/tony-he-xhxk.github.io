@@ -678,3 +678,44 @@ a:hover { text-decoration: underline; }
 .bar-score.lvl-upper { --tk: rgba(253, 216, 53, .30);  --fl: #fdd835; }
 .bar-score.lvl-npc   { --tk: rgba(255, 183, 77, .30);  --fl: #ffb74d; }
 .bar-score.lvl-dead  { --tk: rgba(239, 154, 154, .30); --fl: #ef9a9a; }
+
+/* ===== 专栏导航页 ===== */
+.zl-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 2px;
+}
+.zl-nav-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  color: var(--text);
+  transition: all .2s ease;
+}
+.zl-nav-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 6px;
+}
+.zl-nav-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+.zl-nav-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(43, 179, 166, 0.12);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.zl-nav-empty {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
