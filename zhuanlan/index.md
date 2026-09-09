@@ -53,5 +53,6 @@ permalink: /zhuanlan/
     empty.style.display = hits ? 'none' : '';
   }
   input.addEventListener('input', render);
+  render();
 })();
 </script>
