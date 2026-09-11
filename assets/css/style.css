@@ -140,7 +140,7 @@ a:hover { text-decoration: underline; }
 }
 .project-cta .arrow { margin-left: 4px; }
 
-/* 带主副按钮的卡片：底部按钮纵向堆叠（主上副下），全端统一 */
+/* 带主副按钮的卡片：底部按钮左对齐、同卡片等宽（取两者中较宽者），全端统一 */
 .project-card-split {
   flex: 0 0 100%;
 }
@@ -155,13 +155,12 @@ a:hover { text-decoration: underline; }
 .project-card-split .project-info:hover { text-decoration: none; }
 .project-card-split .project-info p { margin-bottom: 12px; }
 .project-actions {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: max-content;
+  align-self: flex-start;
   gap: 10px;
-  flex-shrink: 0;
 }
 .project-actions .project-cta {
-  align-self: stretch;
   text-align: center;
 }
 .project-cta-gh {
@@ -561,8 +560,9 @@ a:hover { text-decoration: underline; }
   .carousel { gap: 6px; }
   .carousel-arrow { width: 32px; height: 32px; font-size: 18px; }
 
-  /* 卡片：缩小内边距；按钮堆叠样式已全局统一，此处只收紧尺寸 */
+  /* 卡片：缩小内边距；按钮布局已全局统一（左对齐等宽），此处只收紧尺寸 */
   .project-card { padding: 20px 18px; }
+  .project-actions { max-width: 100%; }
   .project-actions .project-cta { padding: 10px 12px; }
 }
 
