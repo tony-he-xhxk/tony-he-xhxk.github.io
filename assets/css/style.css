@@ -97,6 +97,7 @@ a:hover { text-decoration: underline; }
 
 .project-card {
   flex: 0 0 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   padding: 26px 28px;
@@ -139,7 +140,7 @@ a:hover { text-decoration: underline; }
 }
 .project-cta .arrow { margin-left: 4px; }
 
-/* PRTI 特殊：统一上下布局，底部横排双按钮 */
+/* 带主副按钮的卡片：底部按钮纵向堆叠（主上副下），全端统一 */
 .project-card-split {
   flex: 0 0 100%;
 }
@@ -155,9 +156,13 @@ a:hover { text-decoration: underline; }
 .project-card-split .project-info p { margin-bottom: 12px; }
 .project-actions {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
   flex-shrink: 0;
+}
+.project-actions .project-cta {
+  align-self: stretch;
+  text-align: center;
 }
 .project-cta-gh {
   background: transparent;
@@ -556,13 +561,9 @@ a:hover { text-decoration: underline; }
   .carousel { gap: 6px; }
   .carousel-arrow { width: 32px; height: 32px; font-size: 18px; }
 
-  /* 卡片：缩小内边距；按钮均分占满 */
+  /* 卡片：缩小内边距；按钮堆叠样式已全局统一，此处只收紧尺寸 */
   .project-card { padding: 20px 18px; }
-  .project-actions .project-cta {
-    flex: 1;
-    text-align: center;
-    padding: 10px 12px;
-  }
+  .project-actions .project-cta { padding: 10px 12px; }
 }
 
 /* ===== 美式咖啡横评 ===== */
