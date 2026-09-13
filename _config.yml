@@ -17,3 +17,7 @@ plugins:
 markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
+
+# 不发布到线上的文件（仅作为仓库内数据源供 GitHub Actions 解析）
+exclude:
+  - zhuanlan/美式咖啡评测数据.txt
