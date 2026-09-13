@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""解析 评测数据.txt → assets/data/coffee_reviews.json
+"""解析 zhuanlan/美式咖啡评测数据.txt → assets/data/coffee_reviews.json
 
 数据文件格式（UTF-8，空行分隔逻辑块）：
 
@@ -36,7 +36,7 @@ import re
 import sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 仓库根
-DEFAULT_SRC = os.path.join(BASE, "专栏", "2-美式咖啡横评", "评测数据.txt")
+DEFAULT_SRC = os.path.join(BASE, "zhuanlan", "美式咖啡评测数据.txt")
 DEFAULT_DST = os.path.join(BASE, "assets", "data", "coffee_reviews.json")
 
 KEY_RE = re.compile(r"^(测评年月|配置|热量参考|评分|评价)：(.*)$")

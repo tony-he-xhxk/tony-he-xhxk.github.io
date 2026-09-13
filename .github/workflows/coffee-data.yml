@@ -3,7 +3,7 @@ name: Sync coffee review data
 on:
   push:
     paths:
-      - '专栏/2-美式咖啡横评/评测数据.txt'
+      - 'zhuanlan/美式咖啡评测数据.txt'
     branches:
       - main
 
