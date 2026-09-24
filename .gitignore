@@ -5,3 +5,5 @@ youqing-preview.html
 _preview_*.html
 # 专栏信息源目录，不入库（评测数据已迁至 zhuanlan/美式咖啡评测数据.txt）
 /专栏/*
+# Obsidian 本地配置，不入库
+.obsidian/
