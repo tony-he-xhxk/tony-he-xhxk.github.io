@@ -1,0 +1,195 @@
+/* 中秋节临时配色 —— 只在 2026-09-25（北京时间）当天生效
+ *
+ * 机制：assets/js/midautumn-theme.js 在当天给 <html> 加上 .theme-midautumn，
+ *       下面的规则才会命中；26 日 0 点起类名不再添加，站点自动回到薄荷配色。
+ * 来源：与「月满中秋 · 灯谜趣答」同一套配色（夜空靛蓝 + 灯笼金）。
+ * 原则：只替换颜色，不添加任何动效。
+ */
+
+html.theme-midautumn {
+  /* 覆盖站点原有的 7 个基础变量 */
+  --bg: #0b1026;
+  --card: #16203f;
+  --accent: #ffb347;
+  --accent-dark: #ffd98a;
+  --text: #f7f1e6;
+  --muted: #b9b3a7;
+  --border: #2c3762;
+
+  /* 中秋色板本身，供下面复用 */
+  --ma-night: #0b1026;
+  --ma-night-2: #16203f;
+  --ma-night-3: #1e2a52;
+  --ma-moon: #ffeec2;
+  --ma-gold: #ffd98a;
+  --ma-amber: #ffb347;
+  --ma-ember: #ff7a45;
+  --ma-warn: #ff9a9a;
+  --ma-line: rgba(255, 217, 138, 0.22);
+  --ma-ink: #2a1204;
+
+  color-scheme: dark;
+}
+
+/* ---------- 面板：深色卡面 + 金色描边 ---------- */
+html.theme-midautumn .site-header { border-bottom-color: var(--ma-line); }
+
+html.theme-midautumn .post-card,
+html.theme-midautumn .zl-card,
+html.theme-midautumn .zl-nav-card,
+html.theme-midautumn .post,
+html.theme-midautumn .page,
+html.theme-midautumn .youqing,
+html.theme-midautumn .cf-card,
+html.theme-midautumn .yq-item { border-color: var(--ma-line); }
+
+/* ---------- 首屏项目卡片：夜空渐变 + 灯笼金按钮 ---------- */
+html.theme-midautumn .project-card {
+  background: linear-gradient(135deg, var(--ma-night-3), var(--ma-night));
+  border: 1px solid var(--ma-line);
+  color: var(--text);
+  box-shadow: 0 12px 30px rgba(3, 7, 18, 0.55);
+}
+
+html.theme-midautumn .project-card:hover { box-shadow: 0 16px 38px rgba(3, 7, 18, 0.72); }
+html.theme-midautumn .project-card h3 { color: var(--ma-moon); }
+html.theme-midautumn .project-card p { color: var(--muted); }
+html.theme-midautumn .project-card-split .project-info { color: var(--text); }
+
+html.theme-midautumn .project-badge {
+  background: rgba(255, 217, 138, 0.14);
+  color: var(--ma-gold);
+}
+
+html.theme-midautumn .project-personas span {
+  background: rgba(255, 217, 138, 0.12);
+  color: var(--ma-moon);
+}
+
+html.theme-midautumn .project-cta {
+  background: linear-gradient(140deg, #ffd98a, #ffb347 65%, #ff7a45);
+  color: var(--ma-ink);
+  box-shadow: 0 8px 20px rgba(255, 158, 66, 0.28);
+}
+
+html.theme-midautumn .project-cta-gh {
+  background: transparent;
+  color: var(--ma-moon);
+  border-color: rgba(255, 217, 138, 0.5);
+}
+
+html.theme-midautumn .project-cta-gh:hover {
+  background: rgba(255, 217, 138, 0.14);
+  color: var(--ma-moon);
+}
+
+/* ---------- 项目轮播的箭头与页码点 ---------- */
+html.theme-midautumn .carousel-arrow {
+  background: #131c3c;
+  border-color: var(--ma-line);
+  color: var(--ma-gold);
+}
+
+html.theme-midautumn .carousel-arrow:hover { background: #1b2550; }
+html.theme-midautumn .carousel-dots .dot { background: #38426f; }
+
+/* ---------- 搜索框、分页按钮、标签 ---------- */
+html.theme-midautumn .search-box input[type="search"] {
+  background: #101a38;
+  border-color: var(--ma-line);
+  color: var(--text);
+}
+
+html.theme-midautumn .search-box input[type="search"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 179, 71, 0.18);
+}
+
+html.theme-midautumn .page-btn {
+  background: #101a38;
+  border-color: var(--ma-line);
+  color: var(--ma-gold);
+}
+
+html.theme-midautumn .page-btn:hover {
+  border-color: var(--accent);
+  background: rgba(255, 179, 71, 0.16);
+}
+
+html.theme-midautumn .page-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ma-ink);
+}
+
+html.theme-midautumn .tag {
+  background: rgba(255, 179, 71, 0.16);
+  color: var(--ma-gold);
+}
+
+html.theme-midautumn .post-card:hover,
+html.theme-midautumn .zl-card:hover,
+html.theme-midautumn .zl-nav-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(255, 179, 71, 0.14);
+}
+
+html.theme-midautumn .zl-card h3,
+html.theme-midautumn .zl-nav-card h3 { color: var(--text); }
+
+html.theme-midautumn .zl-content .post-content p > img:only-child,
+html.theme-midautumn .zl-content .post-content > img { box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55); }
+
+/* ---------- 正文里的引用块与代码 ---------- */
+html.theme-midautumn .post-content blockquote { background: rgba(30, 42, 82, 0.5); }
+
+html.theme-midautumn .post-content code {
+  background: rgba(255, 217, 138, 0.14);
+  color: var(--ma-gold);
+}
+
+html.theme-midautumn .post-content pre {
+  background: #0a1024;
+  color: var(--text);
+  border-color: var(--ma-line);
+}
+
+/* ---------- 友情网址页 ---------- */
+html.theme-midautumn .yq-tip {
+  background: rgba(255, 179, 71, 0.14);
+  border-color: rgba(255, 217, 138, 0.35);
+  color: var(--ma-gold);
+}
+
+html.theme-midautumn .yq-seq { background: rgba(255, 179, 71, 0.16); }
+
+html.theme-midautumn .yq-alert {
+  background: rgba(255, 183, 71, 0.14);
+  border-color: rgba(255, 183, 71, 0.35);
+  color: var(--ma-gold);
+}
+
+/* ---------- 美式咖啡横评：浅底卡片与评分条改成夜里也读得清 ---------- */
+html.theme-midautumn .cf-card { background: var(--card); }
+html.theme-midautumn .cf-disclaimer { color: var(--ma-warn); }
+html.theme-midautumn .cf-rv-date { color: var(--ma-ink); }
+
+html.theme-midautumn .bar-track { background: var(--tk, rgba(247, 241, 230, 0.12)); }
+html.theme-midautumn .bar-fill { background: var(--fl, rgba(247, 241, 230, 0.3)); }
+
+/* 评分条原本是浅色填充配深色文字，夜里改为深色填充，白色文字才看得清 */
+html.theme-midautumn .bar-kcal.lvl-high    { --tk: rgba(255, 138, 138, 0.22); --fl: #c0504a; }
+html.theme-midautumn .bar-kcal.lvl-midhigh { --tk: rgba(255, 200, 90, 0.22);  --fl: #b58900; }
+html.theme-midautumn .bar-kcal.lvl-midlow  { --tk: rgba(140, 210, 150, 0.22); --fl: #3f8f4a; }
+html.theme-midautumn .bar-kcal.lvl-low     { --tk: rgba(120, 200, 130, 0.22); --fl: #2f7d3a; }
+html.theme-midautumn .bar-score.lvl-top    { --tk: rgba(120, 200, 130, 0.22); --fl: #2f7d3a; }
+html.theme-midautumn .bar-score.lvl-great  { --tk: rgba(140, 210, 150, 0.22); --fl: #3f8f4a; }
+html.theme-midautumn .bar-score.lvl-upper  { --tk: rgba(255, 200, 90, 0.22);  --fl: #b58900; }
+html.theme-midautumn .bar-score.lvl-npc    { --tk: rgba(255, 179, 71, 0.22);  --fl: #c07a1f; }
+html.theme-midautumn .bar-score.lvl-dead   { --tk: rgba(255, 138, 138, 0.22); --fl: #c0504a; }
+
+/* ---------- 图片占位块 ---------- */
+html.theme-midautumn .gallery-item {
+  background: #1b2550;
+  border-color: var(--ma-line);
+}
