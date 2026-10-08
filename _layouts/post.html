@@ -12,6 +12,9 @@ layout: default
       </span>
       {% endif %}
     </div>
+    {% if page.special_notice %}
+    <p class="post-notice">特别声明：{{ page.special_notice }}</p>
+    {% endif %}
   </header>
 
   {% if page.images %}

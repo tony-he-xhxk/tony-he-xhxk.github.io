@@ -193,3 +193,6 @@ html.theme-midautumn .gallery-item {
   background: #1b2550;
   border-color: var(--ma-line);
 }
+
+/* ---------- 帖子特别声明：夜空底改成柔和红，保证读得清 ---------- */
+html.theme-midautumn .post-notice { color: var(--ma-warn); }

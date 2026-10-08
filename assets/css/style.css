@@ -391,6 +391,13 @@ a:hover { text-decoration: underline; }
 .post { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px; }
 .post-header h1 { font-size: 24px; margin-bottom: 10px; }
 .post-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+/* 帖子特别声明（Frontmatter: special_notice）：日期与标签下方单独一行红字 */
+.post-notice {
+  margin: -6px 0 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #d64545;
+}
 .post-content { font-size: 15px; }
 .post-content h2 { font-size: 19px; margin: 24px 0 10px; }
 .post-content h3 { font-size: 16px; margin: 20px 0 8px; }
