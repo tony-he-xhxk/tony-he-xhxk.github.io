@@ -140,15 +140,18 @@ html.theme-midautumn .zl-nav-card h3 { color: var(--text); }
 html.theme-midautumn .zl-content .post-content p > img:only-child,
 html.theme-midautumn .zl-content .post-content > img { box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55); }
 
-/* ---------- 正文里的引用块与代码 ---------- */
-html.theme-midautumn .post-content blockquote { background: rgba(30, 42, 82, 0.5); }
+/* ---------- 正文里的引用块与代码（帖子正文 + about 等 .page 页面） ---------- */
+html.theme-midautumn .post-content blockquote,
+html.theme-midautumn .page blockquote { background: rgba(30, 42, 82, 0.5); }
 
-html.theme-midautumn .post-content code {
+html.theme-midautumn .post-content code,
+html.theme-midautumn .page code {
   background: rgba(255, 217, 138, 0.14);
   color: var(--ma-gold);
 }
 
-html.theme-midautumn .post-content pre {
+html.theme-midautumn .post-content pre,
+html.theme-midautumn .page pre {
   background: #0a1024;
   color: var(--text);
   border-color: var(--ma-line);

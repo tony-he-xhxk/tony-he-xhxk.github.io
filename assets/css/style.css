@@ -426,7 +426,15 @@ a:hover { text-decoration: underline; }
 /* 关于/404 页面 */
 .page { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px; }
 .page h1 { font-size: 22px; margin-bottom: 14px; }
+/* 只作用于页面正文的直接子标题（Markdown 输出），避免影响 posts.html 里的帖子卡片标题 */
+.page > h2 { font-size: 19px; margin: 24px 0 10px; }
+.page > h3 { font-size: 16px; margin: 20px 0 8px; }
 .page p { margin-bottom: 10px; }
+/* 引用块与代码块：与帖子正文 .post-content 用同一套样式，便于 about 页后续新增内容保持一致 */
+.page blockquote { border-left: 3px solid var(--accent); background: #f0fffd; padding: 8px 14px; margin: 14px 0; border-radius: 0 8px 8px 0; color: var(--muted); }
+.page code { background: #eef6f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+.page pre { background: #f0fffd; color: #1f2d3d; padding: 14px; border-radius: 10px; overflow-x: auto; margin-bottom: 14px; border: 1px solid var(--border); }
+.page pre code { background: none; padding: 0; color: inherit; }
 
 /* 页脚 */
 .site-footer {
