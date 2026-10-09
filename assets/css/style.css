@@ -50,7 +50,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* 项目卡片轮播 */
-.projects { margin: 28px 0 40px; }
+.projects { margin: 0 0 40px; }
 .carousel { display: flex; align-items: center; gap: 14px; }
 .carousel-viewport { flex: 1; overflow: hidden; border-radius: 16px; }
 .projects-track { display: flex; transition: transform .5s ease; }
