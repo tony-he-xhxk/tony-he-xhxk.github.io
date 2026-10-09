@@ -49,19 +49,6 @@ a:hover { text-decoration: underline; }
   padding: 24px 16px 64px;
 }
 
-/* Hero */
-.hero {
-  padding: 48px 0 40px;
-  text-align: center;
-}
-.hero-name {
-  font-size: 34px;
-  color: var(--accent-dark);
-  margin-bottom: 10px;
-}
-.hero-desc { color: var(--text); font-size: 16px; }
-.hero-note { color: var(--muted); font-size: 13px; margin-top: 8px; }
-
 /* 项目卡片轮播 */
 .projects { margin: 28px 0 40px; }
 .carousel { display: flex; align-items: center; gap: 14px; }
@@ -561,7 +548,6 @@ a:hover { text-decoration: underline; }
 
 /* 移动端适配 */
 @media (max-width: 640px) {
-  .hero-name { font-size: 28px; }
   .post { padding: 18px 16px; }
   .youqing { padding: 20px 16px; }
   .yq-hero h1 { font-size: 26px; }
