@@ -9,6 +9,10 @@
   --border: #d9eceb;
 }
 
+/* 始终为滚动条预留空间：避免"能滚动"与"不能滚动"的页面之间
+   页眉与内容整体左右偏移约 7px（看起来像宽度在跳）。 */
+html { scrollbar-gutter: stable; }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
