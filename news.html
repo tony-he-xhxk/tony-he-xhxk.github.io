@@ -13,8 +13,11 @@ wide: true
   <div class="search-meta"><span class="search-count" id="newsCount"></span></div>
 
   {%- assign all_news = site.data.news | sort: "date" | reverse -%}
+  {%- assign pinned_news = all_news | where: "pin", true -%}
+  {%- assign normal_news = all_news | where_exp: "item", "item.pin != true" -%}
+  {%- assign news_list = pinned_news | concat: normal_news -%}
   <div class="posts" id="newsList">
-    {% for item in all_news %}
+    {% for item in news_list %}
     <div class="news-card" data-text="{{ item.text | escape }} {{ item.date }}">
       <div class="news-card-head">
         <time datetime="{{ item.date }}">{{ item.date | date: "%Y-%m-%d" }}</time>
