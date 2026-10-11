@@ -6,8 +6,8 @@
   <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ site.description }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/midautumn-theme.css' | relative_url }}">
-  <script src="{{ '/assets/js/midautumn-theme.js' | relative_url }}"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/dark-theme.css' | relative_url }}">
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
 </head>
 <body class="{% if page.wide or site.wide_layouts contains page.layout %}is-wide{% endif %}">
   <header class="site-header">
@@ -15,9 +15,17 @@
       <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <div class="nav-links">
         <a href="{{ '/' | relative_url }}">回家</a>
-        <a href="{{ '/posts/' | relative_url }}">全部帖子</a>
         <a href="{{ '/youqing/' | relative_url }}">友情链接</a>
         <a href="{{ '/about/' | relative_url }}">关于</a>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="切换为深色模式" aria-pressed="false" title="切换为深色模式">
+          <svg class="icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.4v2.3M12 19.3v2.3M2.4 12h2.3M19.3 12h2.3M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/>
+          </svg>
+          <svg class="icon icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.5 14.7A8.7 8.7 0 0 1 9.3 3.5a8.7 8.7 0 1 0 11.2 11.2z"/>
+          </svg>
+        </button>
       </div>
     </nav>
   </header>

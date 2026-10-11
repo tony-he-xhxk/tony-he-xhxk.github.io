@@ -42,6 +42,33 @@ a:hover { text-decoration: underline; }
 .nav-links { display: flex; gap: 18px; }
 .nav-links a { color: var(--muted); font-size: 14px; }
 
+/* 深色模式开关（页眉右侧）：亮色显示线条太阳，深色显示线条月亮 */
+.theme-toggle {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.theme-toggle:hover {
+  color: var(--accent-dark);
+  border-color: var(--accent);
+  background: #e6fffb;
+}
+html.theme-dark .theme-toggle:hover { background: rgba(255, 217, 138, 0.14); }
+.theme-toggle .icon { display: block; }
+.theme-toggle .icon-moon { display: none; }
+html.theme-dark .theme-toggle .icon-sun { display: none; }
+html.theme-dark .theme-toggle .icon-moon { display: block; }
+
 /* 主体 */
 .container {
   max-width: 720px;
