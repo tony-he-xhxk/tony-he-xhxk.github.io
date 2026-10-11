@@ -411,6 +411,8 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
      关于页走 .page-article */
   body.is-wide .post-read .post-header,
   body.is-wide .post-read .post-content,
+  body.is-wide .post-read .post-gallery,
+  body.is-wide .post-read .gallery-note,
   body.is-wide .page-article > * { max-width: 900px; margin-left: auto; margin-right: auto; }
 
   /* 帖子图片画廊：桌面一行最多 5 张 */
