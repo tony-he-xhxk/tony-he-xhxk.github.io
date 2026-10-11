@@ -370,9 +370,31 @@ a:hover { text-decoration: underline; }
 
 /* ===== 首页布局：宽屏两栏（≥1024px） ===== */
 @media (min-width: 1024px) {
-  /* 只有加了 wide: true 的页面（首页）用宽容器；帖子详情、关于等仍为 720px */
+  /* 宽容器：首页/列表页用 wide: true 开启，帖子详情与关于页由 _config.yml 的 wide_layouts 开启 */
   body.is-wide .nav,
   body.is-wide .container { max-width: 1120px; }
+
+  /* 列表页：桌面两列（全部帖子、全部专栏、友情链接） */
+  body.is-wide .posts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.is-wide .zl-nav-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body.is-wide .yq-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; }
+
+  /* 文章类页面：白色卡片 1120 宽与页眉对齐，正文与标题收到 900 居中
+     .post-read 由 _layouts/post.html（全部帖子）和带 narrow: true 的专栏正文启用；
+     关于页走 .page-article */
+  body.is-wide .post-read .post-header,
+  body.is-wide .post-read .post-content,
+  body.is-wide .page-article > * { max-width: 900px; margin-left: auto; margin-right: auto; }
+
+  /* 帖子图片画廊：桌面一行最多 5 张 */
+  body.is-wide .post-gallery { grid-template-columns: repeat(5, 1fr); }
+
+  /* 专栏正文里的内嵌截图（手机长截图）：限高，避免在宽卡片里显得过大 */
+  body.is-wide .zl-content.post-read .post-content > img,
+  body.is-wide .zl-content.post-read .post-content p > img:only-child { max-height: 480px; }
+
+  /* 美式咖啡横评：卡片两列 */
+  body.is-wide .cf-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 
   .home-grid {
     display: grid;

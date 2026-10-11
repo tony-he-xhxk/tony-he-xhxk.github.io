@@ -11,6 +11,14 @@ baseurl: ""
 # 每页展示帖子数
 paginate: 10
 
+# 宽屏布局（桌面端容器 1120px，与首页对齐）
+# 列在这里的 layout 会自动启用宽容器：帖子详情（post）、关于页（page）、专栏正文（zhuanlan）
+# 其他页面想变宽，在自己的 frontmatter 里加 wide: true
+wide_layouts:
+  - post
+  - page
+  - zhuanlan
+
 # 构建配置（GitHub Pages 内置支持 jekyll-sitemap，自动生成 sitemap.xml）
 plugins:
   - jekyll-sitemap

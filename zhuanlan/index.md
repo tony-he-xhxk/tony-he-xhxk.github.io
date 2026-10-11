@@ -2,6 +2,7 @@
 layout: default
 title: 专栏导航页
 permalink: /zhuanlan/
+wide: true
 ---
 <article class="post">
   <header class="post-header">
