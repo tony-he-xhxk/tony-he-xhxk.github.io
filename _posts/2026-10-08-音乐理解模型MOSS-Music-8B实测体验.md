@@ -100,17 +100,11 @@ AI 不是只懂文字，它也能“听”。
 图2
 
 ```text
-(moss-music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music#
-python ask.py "分析这首歌的情感，并给出理由" -n 512
+(moss-music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music# python ask.py "分析这首歌的情感，并给出理由" -n 512
 [音频] /root/autodl-tmp/MOSS-Music/audio/周杰伦-稻香.mp3 (3.4 MB)
 [提问] 分析这首歌的情感，并给出理由
 [参数] max_tokens=512 temperature=0.0 rep_penalty=1.15
-这首歌呈现出一种复杂而细腻的情感层次，主要在忧郁 (melancholic) 与希望 (hopeful) 之间
-游走。 A 大调的明亮底色为音乐提供了温暖的基调，但频繁转向 F#小调和 D 大调的和声进行
-，以及 Bm7 、 C#m7等带有忧郁色彩的和弦，营造出一种内省而略带伤感的氛围。 100 BPM 的
-中速节奏配合轻柔的刷弦鼓点和空灵的合成器铺底，进一步强化了这种既沉静又充满情感张力的
-听感。整体上，音乐在悲伤与慰藉之间取得平衡，仿佛在诉说一段回忆中的遗憾，却仍保有前行
-的勇气。
+这首歌呈现出一种复杂而细腻的情感层次，主要在忧郁 (melancholic) 与希望 (hopeful) 之间游走。 A 大调的明亮底色为音乐提供了温暖的基调，但频繁转向 F#小调和 D 大调的和声进行，以及 Bm7 、 C#m7等带有忧郁色彩的和弦，营造出一种内省而略带伤感的氛围。 100 BPM 的中速节奏配合轻柔的刷弦鼓点和空灵的合成器铺底，进一步强化了这种既沉静又充满情感张力的听感。整体上，音乐在悲伤与慰藉之间取得平衡，仿佛在诉说一段回忆中的遗憾，却仍保有前行的勇气。
 [统计] tokens=161 | finish=stop
 [耗时] 5.0 秒
 [音频编码] prompt_tokens=3112
@@ -121,16 +115,11 @@ python ask.py "分析这首歌的情感，并给出理由" -n 512
 图3
 
 ```text
-(moss-music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music#
-python ask.py "分析这首歌的情感，并给出理由" -n 512 -f 1.mp3
+(moss-music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music# python ask.py "分析这首歌的情感，并给出理由" -n 512 -f 1.mp3
 [音频] /root/autodl-tmp/MOSS-Music/audio/1.mp3 (7.9 MB)
 [提问]分析这首歌的情感，并给出理由
 [参数] max_tokens=512 temperature=0.0 rep_penalty=1.15
-这首歌呈现出一种复杂而微妙的情感张力，主要体现在C大调的明亮色彩与歌词中“普通”主题所
-传达的疏离感之间的对比。 120 BPM 的稳定节拍配合电子鼓点营造出一种机械般的推进感，既
-带来舞曲的活力，又暗示着日常生活的重复性。合成器音色的闪烁质感与人声的平直演绎形成反
-差，创造出一种“在平凡中寻找意义”的矛盾情绪——既有对平庸的无奈，又通过音乐的律动获得某
-种解脱。
+这首歌呈现出一种复杂而微妙的情感张力，主要体现在C大调的明亮色彩与歌词中“普通”主题所传达的疏离感之间的对比。 120 BPM 的稳定节拍配合电子鼓点营造出一种机械般的推进感，既带来舞曲的活力，又暗示着日常生活的重复性。合成器音色的闪烁质感与人声的平直演绎形成反差，创造出一种“在平凡中寻找意义”的矛盾情绪——既有对平庸的无奈，又通过音乐的律动获得某种解脱。
 [统计] tokens=118 | finish=stop
 [耗时] 4.9 秒
 ```
@@ -140,23 +129,15 @@ python ask.py "分析这首歌的情感，并给出理由" -n 512 -f 1.mp3
 图4
 
 ```text
-(moss-music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music#
-python ask.py "请分析这首歌的情感，并说明理由" -f 原恒星.mp3 -n 512
+(moss-music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music# python ask.py "请分析这首歌的情感，并说明理由" -f 原恒星.mp3 -n 512
 [音频] /root/autodl-tmp/MOSS-Music/audio/原恒星.mp3 (5.5 MB)
 [提问]请分析这首歌的情感，并说明理由
 [参数] max_tokens=512 temperature=0.0 rep_penalty=1.15
-这首歌呈现出一种复杂而细膩的情感层次，主要围绕着忧郁与希望之间的张力展开。 F# minor 
-的调性赋予了音乐一种内省、略带哀伤的底色，但 120 BPM 的稳定节奏和清晰的 4 / 4 拍结构
-又为情绪提供了向前推进的动力，避免了沉溺于悲伤。合成器铺底营造出空灵、漂浮的氛围，配
-合干净的电吉他分解和弦，增强了孤独感与沉思性。然而，副歌部分的和声进行（如 i -VII-VI
--V) 带来一种释放感，暗示着在痛苦中寻找光明的可能。整体上，这首歌在克制中蕴含情感爆发
-的潜力，形成一种"含泪微笑"式的听觉体验。
+这首歌呈现出一种复杂而细膩的情感层次，主要围绕着忧郁与希望之间的张力展开。 F# minor 的调性赋予了音乐一种内省、略带哀伤的底色，但 120 BPM 的稳定节奏和清晰的 4 / 4 拍结构又为情绪提供了向前推进的动力，避免了沉溺于悲伤。合成器铺底营造出空灵、漂浮的氛围，配合干净的电吉他分解和弦，增强了孤独感与沉思性。然而，副歌部分的和声进行（如 i -VII-VI-V) 带来一种释放感，暗示着在痛苦中寻找光明的可能。整体上，这首歌在克制中蕴含情感爆发的潜力，形成一种"含泪微笑"式的听觉体验。
 [统计] tokens=165 | finish=stop
 [耗时] 5.3 秒
 [音频编码] prompt_tokens=2842
-(moss¯music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music#
-python ask.py "分析这首歌的段落结构，用列表给出每段名称和起止时间" -f 原恒星.mp3 -n 
-512
+(moss¯music) root@autodl-container-678c4cb81e-e7498a72: /autodl-tmp/MOSS-Music# python ask.py "分析这首歌的段落结构，用列表给出每段名称和起止时间" -f 原恒星.mp3 -n 512
 [音频] /root/autodl-tmp/MOSS-Music/audio/原恒星.mp3 (5.5 MB)
 [提问]分析这首歌的段落结构，用列表给出每段名称和起止时间
 [参数] max_tokens=512 temperature=0.0 rep_penalty=1.15

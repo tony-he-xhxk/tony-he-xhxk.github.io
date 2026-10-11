@@ -69,6 +69,71 @@ html.theme-dark .theme-toggle:hover { background: rgba(255, 217, 138, 0.14); }
 html.theme-dark .theme-toggle .icon-sun { display: none; }
 html.theme-dark .theme-toggle .icon-moon { display: block; }
 
+/* ===== 图片放大查看（画廊 + 正文插画共用一套，可左右切换） ===== */
+.post-gallery .gallery-item,
+.post-content img { cursor: zoom-in; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(8, 13, 26, 0.9);
+  -webkit-tap-highlight-color: transparent;
+}
+.lightbox[hidden] { display: none; }
+.lb-img {
+  max-width: 92vw;
+  max-height: 86vh;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  background: #fff;
+  object-fit: contain;
+}
+.lb-btn {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.lb-btn:hover { background: rgba(255, 255, 255, 0.26); border-color: rgba(255, 255, 255, 0.6); }
+.lb-btn[hidden] { display: none; }
+.lb-prev { left: 18px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 18px; top: 50%; transform: translateY(-50%); }
+.lb-close { top: 18px; right: 18px; width: 38px; height: 38px; font-size: 18px; }
+.lb-count {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  margin: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  letter-spacing: .04em;
+}
+@media (max-width: 560px) {
+  .lightbox { padding: 14px; }
+  .lb-img { max-width: 96vw; max-height: 78vh; }
+  .lb-prev { left: 8px; }
+  .lb-next { right: 8px; }
+  .lb-btn { width: 40px; height: 40px; font-size: 20px; }
+}
+
 /* 主体 */
 .container {
   max-width: 720px;
@@ -550,7 +615,8 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 .post-content ul, .post-content ol { margin: 0 0 14px 1.4em; }
 .post-content blockquote { border-left: 3px solid var(--accent); background: #f0fffd; padding: 8px 14px; margin: 14px 0; border-radius: 0 8px 8px 0; color: var(--muted); }
 .post-content code { background: #eef6f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
-.post-content pre { background: #f0fffd; color: #1f2d3d; padding: 14px; border-radius: 10px; overflow-x: auto; margin-bottom: 14px; border: 1px solid var(--border); }
+/* 代码块：源文件里一行就是一行，交给浏览器按容器宽度自动折行（不再需要手工调宽度） */
+.post-content pre { background: #f0fffd; color: #1f2d3d; padding: 14px; border-radius: 10px; margin-bottom: 14px; border: 1px solid var(--border); white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
 .post-content pre code { background: none; padding: 0; color: inherit; }
 .post-content img { max-width: 100%; border-radius: 8px; }
 /* 专栏文章内嵌图：单独成段、居中显示，竖屏截图限高以免撑高内容 */
@@ -578,7 +644,7 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 /* 引用块与代码块：与帖子正文 .post-content 用同一套样式，便于 about 页后续新增内容保持一致 */
 .page blockquote { border-left: 3px solid var(--accent); background: #f0fffd; padding: 8px 14px; margin: 14px 0; border-radius: 0 8px 8px 0; color: var(--muted); }
 .page code { background: #eef6f5; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
-.page pre { background: #f0fffd; color: #1f2d3d; padding: 14px; border-radius: 10px; overflow-x: auto; margin-bottom: 14px; border: 1px solid var(--border); }
+.page pre { background: #f0fffd; color: #1f2d3d; padding: 14px; border-radius: 10px; margin-bottom: 14px; border: 1px solid var(--border); white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
 .page pre code { background: none; padding: 0; color: inherit; }
 
 /* 页脚 */
