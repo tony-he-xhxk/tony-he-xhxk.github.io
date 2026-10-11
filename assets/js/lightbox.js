@@ -4,6 +4,7 @@
  *   包含「专栏正文」里内嵌的截图），按页面顺序连成一条，可左右切换、循环浏览
  * - 没有 JS 时，画廊里原有的 <a href> 仍然照旧在新标签页打开原图
  * - 支持：左右按钮、键盘 ← → Esc、点背景关闭、手机左右滑动
+ * - 切换时先清空画面再加载（避免"编号已变、画面还是上一张"）；打开时预加载整组图片
  */
 (function () {
   var nodes = Array.prototype.slice.call(
@@ -28,6 +29,7 @@
   box.hidden = true;
   box.innerHTML =
     '<img class="lb-img" alt="">' +
+    '<p class="lb-status" role="status" aria-live="polite"></p>' +
     '<button type="button" class="lb-btn lb-prev" aria-label="上一张">‹</button>' +
     '<button type="button" class="lb-btn lb-next" aria-label="下一张">›</button>' +
     '<button type="button" class="lb-btn lb-close" aria-label="关闭">✕</button>' +
@@ -35,17 +37,45 @@
   document.body.appendChild(box);
 
   var imgEl = box.querySelector('.lb-img');
+  var statusEl = box.querySelector('.lb-status');
   var prevBtn = box.querySelector('.lb-prev');
   var nextBtn = box.querySelector('.lb-next');
   var closeBtn = box.querySelector('.lb-close');
   var countEl = box.querySelector('.lb-count');
   var index = 0;
   var lastFocus = null;
+  var preloaded = false;
+
+  /* 打开查看器时把整组图片一次性预加载，避免翻到一半还在等图 */
+  function preloadAll() {
+    if (preloaded) return;
+    preloaded = true;
+    items.forEach(function (it) {
+      var im = new Image();
+      im.src = it.src;
+    });
+  }
+
+  imgEl.addEventListener('load', function () {
+    if (!imgEl.getAttribute('src')) return;
+    imgEl.hidden = false;
+    statusEl.textContent = '';
+  });
+  imgEl.addEventListener('error', function () {
+    /* 关闭时清空 src 也会触发 error，这里忽略 */
+    if (!imgEl.getAttribute('src')) return;
+    imgEl.hidden = true;
+    statusEl.textContent = '这张图没能加载出来（可以继续看下一张）';
+  });
 
   function show(i) {
     index = (i + items.length) % items.length;
-    imgEl.src = items[index].src;
-    imgEl.alt = items[index].alt || ('第 ' + (index + 1) + ' 张图片');
+    var it = items[index];
+    /* 先清空画面并进入"加载中"，加载完成后才显示，保证编号与画面始终一致 */
+    imgEl.hidden = true;
+    statusEl.textContent = '加载中…';
+    imgEl.alt = it.alt || ('第 ' + (index + 1) + ' 张图片');
+    imgEl.src = it.src;
     countEl.textContent = (index + 1) + ' / ' + items.length;
     var many = items.length > 1;
     prevBtn.hidden = !many;
@@ -56,6 +86,7 @@
     lastFocus = document.activeElement;
     box.hidden = false;
     document.body.style.overflow = 'hidden';
+    preloadAll();
     show(i);
     closeBtn.focus();
   }
@@ -63,6 +94,7 @@
   function close() {
     box.hidden = true;
     document.body.style.overflow = '';
+    statusEl.textContent = '';
     imgEl.removeAttribute('src');
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }

@@ -126,6 +126,20 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
   font-size: 13px;
   letter-spacing: .04em;
 }
+/* 加载中 / 加载失败的提示：单独占画面中央，避免和图片重叠 */
+.lb-status {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+}
+.lb-status:empty { display: none; }
 @media (max-width: 560px) {
   .lightbox { padding: 14px; }
   .lb-img { max-width: 96vw; max-height: 78vh; }
