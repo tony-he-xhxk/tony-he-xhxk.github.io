@@ -289,6 +289,113 @@ a:hover { text-decoration: underline; }
 
 .posts { display: flex; flex-direction: column; gap: 14px; }
 
+/* ===== 首页布局：单列（默认，手机/平板） ===== */
+/* DOM 顺序为 项目 → 帖子 → 侧栏（公告/专栏），用 order 把侧栏提到帖子之前 */
+.home-grid { display: flex; flex-direction: column; gap: 26px; }
+.home-grid > .projects { order: 1; }
+.home-grid > .home-side { order: 2; display: flex; flex-direction: column; gap: 26px; }
+.home-grid > .posts { order: 3; }
+.home-grid > .projects,
+.home-grid > .posts,
+.home-grid .home-side > .news,
+.home-grid .home-side > .zhuanlan { margin: 0; }
+
+/* 新闻公告（首页侧栏列表，纯文本不可点击） */
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.news-item {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.news-item:last-child { border-bottom: 0; }
+.news-item time {
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.news-item .news-text { color: var(--text); }
+.news-pin {
+  display: inline-block;
+  font-size: 11px;
+  color: #177a70;
+  background: #e6fffb;
+  border-radius: 999px;
+  padding: 1px 7px;
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+/* 侧栏里的专栏卡片：竖排、标题左对齐（专栏数量少，不再摊成网格） */
+.home-side .zl-grid { grid-template-columns: 1fr; gap: 10px; }
+.home-side .zl-card { min-height: 62px; padding: 14px 18px; justify-content: flex-start; }
+.home-side .zl-card h3 { font-size: 15px; text-align: left; }
+
+/* 全部公告页的公告卡片（不可点击，故无 hover 反馈） */
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px 18px;
+}
+.news-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.news-card-head time {
+  font-size: 12px;
+  color: var(--accent-dark);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.news-card p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ===== 首页布局：宽屏两栏（≥1024px） ===== */
+@media (min-width: 1024px) {
+  /* 只有加了 wide: true 的页面（首页）用宽容器；帖子详情、关于等仍为 720px */
+  body.is-wide .nav,
+  body.is-wide .container { max-width: 1120px; }
+
+  .home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 336px;
+    gap: 28px;
+    align-items: start;
+  }
+  .home-grid > .projects { grid-column: 1; grid-row: 1; }
+  .home-grid > .posts {
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-grid > .posts > .section-head { grid-column: 1 / -1; }
+  .home-grid > .home-side {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 76px;
+  }
+}
+
 /* 专栏 */
 .zhuanlan { margin: 8px 0 36px; }
 .zl-grid {

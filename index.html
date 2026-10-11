@@ -1,6 +1,8 @@
 ---
 layout: default
+wide: true
 ---
+<div class="home-grid">
 <section class="projects">
   <h2 class="section-title">我的项目</h2>
   <div class="carousel">
@@ -127,27 +129,12 @@ layout: default
   <div class="carousel-dots" id="projectsDots"></div>
 </section>
 
-<section class="zhuanlan">
-  <div class="section-head">
-    <h2 class="section-title">专栏</h2>
-    <a class="section-more" href="{{ '/zhuanlan/' | relative_url }}">全部专栏 →</a>
-  </div>
-  <div class="zl-grid">
-    <a class="zl-card" href="{{ '/zhuanlan/美团用券指南/' | relative_url }}">
-      <h3>美团用券指南</h3>
-    </a>
-    <a class="zl-card" href="{{ '/zhuanlan/美式咖啡横评/' | relative_url }}">
-      <h3>美式咖啡横评</h3>
-    </a>
-  </div>
-</section>
-
 <section class="posts">
   <div class="section-head">
     <h2 class="section-title">最近帖子</h2>
     <a class="section-more" href="{{ '/posts/' | relative_url }}">全部帖子 →</a>
   </div>
-  {% for post in site.posts limit: 3 %}
+  {% for post in site.posts limit: 4 %}
   <a class="post-card" href="{{ post.url }}">
     <div class="post-card-head">
       <h3>{{ post.title }}</h3>
@@ -164,3 +151,40 @@ layout: default
   </a>
   {% endfor %}
 </section>
+
+<aside class="home-side">
+  {%- assign all_news = site.data.news | sort: "date" | reverse -%}
+  {%- assign pinned_news = all_news | where: "pin", true -%}
+  {%- assign normal_news = all_news | where_exp: "item", "item.pin != true" -%}
+  {%- assign news_list = pinned_news | concat: normal_news -%}
+  <section class="news">
+    <div class="section-head">
+      <h2 class="section-title">新闻公告</h2>
+      <a class="section-more" href="{{ '/news/' | relative_url }}">全部公告 →</a>
+    </div>
+    <ul class="news-list">
+      {% for item in news_list limit: 5 %}
+      <li class="news-item{% if item.pin %} pin{% endif %}">
+        <time datetime="{{ item.date }}">{{ item.date | date: "%m-%d" }}</time>
+        <span class="news-text">{% if item.pin %}<span class="news-pin">置顶</span>{% endif %}{{ item.text }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="zhuanlan">
+    <div class="section-head">
+      <h2 class="section-title">专栏</h2>
+      <a class="section-more" href="{{ '/zhuanlan/' | relative_url }}">全部专栏 →</a>
+    </div>
+    <div class="zl-grid">
+      <a class="zl-card" href="{{ '/zhuanlan/美团用券指南/' | relative_url }}">
+        <h3>美团用券指南</h3>
+      </a>
+      <a class="zl-card" href="{{ '/zhuanlan/美式咖啡横评/' | relative_url }}">
+        <h3>美式咖啡横评</h3>
+      </a>
+    </div>
+  </section>
+</aside>
+</div>

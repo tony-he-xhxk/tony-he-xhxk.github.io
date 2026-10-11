@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/midautumn-theme.css' | relative_url }}">
   <script src="{{ '/assets/js/midautumn-theme.js' | relative_url }}"></script>
 </head>
-<body>
+<body class="{% if page.wide %}is-wide{% endif %}">
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>

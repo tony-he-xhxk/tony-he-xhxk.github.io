@@ -1,0 +1,132 @@
+---
+layout: default
+title: 全部公告
+permalink: /news/
+---
+<article class="page">
+  <h1>全部公告</h1>
+
+  <div class="search-box">
+    <input type="search" id="newsSearch" placeholder="搜索公告内容或日期…（模糊匹配）" autocomplete="off">
+  </div>
+  <div class="search-meta"><span class="search-count" id="newsCount"></span></div>
+
+  {%- assign all_news = site.data.news | sort: "date" | reverse -%}
+  <div class="posts" id="newsList">
+    {% for item in all_news %}
+    <div class="news-card" data-text="{{ item.text | escape }} {{ item.date }}">
+      <div class="news-card-head">
+        <time datetime="{{ item.date }}">{{ item.date | date: "%Y-%m-%d" }}</time>
+        {% if item.pin %}<span class="news-pin">置顶</span>{% endif %}
+      </div>
+      <p>{{ item.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <nav class="pagination" id="newsPagination" aria-label="分页"></nav>
+
+  <p class="search-empty" id="newsEmpty" style="display:none">没有找到匹配「<span id="newsEmptyQ"></span>」的公告</p>
+</article>
+
+<script>
+(function () {
+  var PER_PAGE = 15;
+  var input = document.getElementById('newsSearch');
+  var list = document.getElementById('newsList');
+  var count = document.getElementById('newsCount');
+  var empty = document.getElementById('newsEmpty');
+  var emptyQ = document.getElementById('newsEmptyQ');
+  var pager = document.getElementById('newsPagination');
+  var cards = Array.prototype.slice.call(list.querySelectorAll('.news-card'));
+  var total = cards.length;
+  var q = '';
+  var page = 1;
+
+  function getFiltered() {
+    if (q === '') return cards;
+    return cards.filter(function (card) {
+      var hay = (card.getAttribute('data-text') || '').toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+  }
+
+  /* 生成带省略号的页码序列，如 1 … 4 5 6 … 12 */
+  function pageList(current, last) {
+    var set = new Set([1, last, current - 1, current, current + 1]);
+    var arr = [];
+    for (var i = 1; i <= last; i++) if (set.has(i)) arr.push(i);
+    var out = [];
+    var prev = 0;
+    arr.forEach(function (p) {
+      if (p - prev > 1) out.push('…');
+      out.push(p);
+      prev = p;
+    });
+    return out;
+  }
+
+  function render() {
+    var filtered = getFiltered();
+    var shown = filtered.length;
+    var last = Math.max(1, Math.ceil(shown / PER_PAGE));
+    if (page > last) page = last;
+
+    /* 显示当前页切片 */
+    cards.forEach(function (card) { card.style.display = 'none'; });
+    var start = (page - 1) * PER_PAGE;
+    filtered.slice(start, start + PER_PAGE).forEach(function (card) { card.style.display = ''; });
+
+    /* 计数 */
+    if (count) {
+      count.textContent = (q === '' ? ('共 ' + total + ' 条') : ('匹配 ' + shown + ' / ' + total + ' 条')) + ' · 第 ' + page + '/' + last + ' 页';
+    }
+
+    /* 空结果 */
+    if (empty && emptyQ) {
+      emptyQ.textContent = input.value.trim();
+      empty.style.display = (q !== '' && shown === 0) ? '' : 'none';
+    }
+
+    /* 分页按钮 */
+    if (!pager) return;
+    pager.innerHTML = '';
+    if (last <= 1) return;
+
+    var prevBtn = document.createElement('button');
+    prevBtn.className = 'page-btn' + (page === 1 ? ' disabled' : '');
+    prevBtn.textContent = '‹';
+    prevBtn.addEventListener('click', function () { if (page > 1) { page--; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    pager.appendChild(prevBtn);
+
+    pageList(page, last).forEach(function (p) {
+      if (p === '…') {
+        var dot = document.createElement('span');
+        dot.className = 'page-dots';
+        dot.textContent = '…';
+        pager.appendChild(dot);
+        return;
+      }
+      var btn = document.createElement('button');
+      btn.className = 'page-btn' + (p === page ? ' active' : '');
+      btn.textContent = p;
+      btn.addEventListener('click', function () { page = p; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      pager.appendChild(btn);
+    });
+
+    var nextBtn = document.createElement('button');
+    nextBtn.className = 'page-btn' + (page === last ? ' disabled' : '');
+    nextBtn.textContent = '›';
+    nextBtn.addEventListener('click', function () { if (page < last) { page++; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+    pager.appendChild(nextBtn);
+  }
+
+  input.addEventListener('input', function () {
+    q = input.value.trim().toLowerCase();
+    page = 1;
+    render();
+  });
+
+  render();
+})();
+</script>
