@@ -970,7 +970,14 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 
 .ai-column-sidebar { min-width: 0; }
 .ai-column-sidebar-left { order: 1; }
-.ai-article { order: 2; min-width: 0; padding: 32px 34px; }
+.ai-article {
+  order: 2;
+  min-width: 0;
+  padding: 32px 34px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
 .ai-column-sidebar-right { order: 3; }
 
 .ai-panel {
