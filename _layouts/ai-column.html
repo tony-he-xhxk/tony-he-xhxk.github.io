@@ -1,0 +1,86 @@
+---
+layout: default
+---
+{%- assign column_pages = site.pages | where: "column", page.column | sort: "column_order" -%}
+<div class="ai-column-grid">
+  <aside class="ai-column-sidebar ai-column-sidebar-left" aria-label="杂谈文章目录">
+    <details class="ai-panel" open>
+      <summary>杂谈目录</summary>
+      <a class="ai-column-back" href="{{ '/zhuanlan/' | relative_url }}">← 返回全部专栏</a>
+      <p class="ai-column-kicker">星河君的AI杂谈</p>
+      <ol class="ai-article-list">
+        {%- for item in column_pages %}
+        <li>
+          <a href="{{ item.url | relative_url }}"{% if item.url == page.url %} class="is-active" aria-current="page"{% endif %}>
+            <span class="ai-article-index">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
+            <span>{{ item.title }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ol>
+    </details>
+  </aside>
+
+  <article class="ai-article post-read zl-content" id="articleTop">
+    <header class="ai-article-header">
+      <p class="ai-article-eyebrow"><a href="{{ '/zhuanlan/' | relative_url }}">专栏</a><span aria-hidden="true">/</span>星河君的AI杂谈</p>
+      <h1>{{ page.title }}</h1>
+      {% if page.date %}
+      <div class="ai-article-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">发布于 {{ page.date | date: "%Y-%m-%d" }}</time>
+      </div>
+      {% endif %}
+    </header>
+
+    <div class="post-content ai-article-content" id="aiArticleContent">
+      {{ content }}
+    </div>
+
+    <nav class="ai-article-footer" aria-label="文章翻页">
+      {%- for item in column_pages %}
+        {%- if item.url == page.url %}
+          {%- if forloop.first == false %}
+            {%- assign previous_index = forloop.index0 | minus: 1 %}
+          <a class="ai-article-prev" href="{{ column_pages[previous_index].url | relative_url }}">← {{ column_pages[previous_index].title }}</a>
+          {%- endif %}
+          {%- if forloop.last == false %}
+            {%- assign next_index = forloop.index0 | plus: 1 %}
+          <a class="ai-article-next" href="{{ column_pages[next_index].url | relative_url }}">{{ column_pages[next_index].title }} →</a>
+          {%- endif %}
+        {%- endif %}
+      {%- endfor %}
+    </nav>
+
+    <section class="ai-comments" id="comments" aria-labelledby="commentsTitle">
+      <div class="ai-comments-head">
+        <h2 id="commentsTitle">讨论与反应</h2>
+        <span>使用 GitHub 账号参与</span>
+      </div>
+      <p class="ai-comment-rules">{{ site.giscus.comment_rules }}</p>
+      {%- if site.giscus.category_id and site.giscus.category_id != "" %}
+      <div
+        class="ai-giscus"
+        id="giscusMount"
+        data-repo="{{ site.giscus.repo }}"
+        data-repo-id="{{ site.giscus.repo_id }}"
+        data-category="{{ site.giscus.category }}"
+        data-category-id="{{ site.giscus.category_id }}"
+      ></div>
+      {%- else %}
+      <p class="ai-comments-pending">GitHub 评论正在准备中：管理员启用 Discussions 并完成 giscus 配置后，这里会开放登录、评论与表情反应。</p>
+      {%- endif %}
+    </section>
+  </article>
+
+  <aside class="ai-column-sidebar ai-column-sidebar-right" aria-label="本文标题目录">
+    <details class="ai-panel" id="aiTocPanel" open>
+      <summary>本文骨干</summary>
+      <nav class="ai-toc" aria-label="本文标题目录">
+        <ol class="ai-toc-list" id="aiTocList"></ol>
+        <p class="ai-toc-empty" id="aiTocEmpty" hidden>本篇暂无分节</p>
+      </nav>
+    </details>
+  </aside>
+</div>
+
+<script src="{{ '/assets/js/ai-column.js' | relative_url }}" defer></script>

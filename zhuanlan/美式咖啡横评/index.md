@@ -5,7 +5,7 @@ permalink: /zhuanlan/美式咖啡横评/
 ---
 <p class="cf-disclaimer">个人主观评测，具体口味因人而异，没有品牌推荐倾向，也不推荐大家一次性喝很多咖啡，或者在夜间喝咖啡喵。另外真心不推荐小白直接挑战美式！！！</p>
 
-<div class="cf-regions" id="coffeeReviews">
+<div class="cf-regions" id="coffeeReviews" data-src="{{ '/zhuanlan/美式咖啡横评/coffee_reviews.json' | relative_url }}">
   <p class="cf-loading">加载中…</p>
 </div>
 

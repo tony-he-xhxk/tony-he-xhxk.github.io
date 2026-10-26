@@ -23,6 +23,10 @@ wide: true
       <h3>美式咖啡横评</h3>
       <p>不知道美式之中藏着怎样的玄机？盲点美式大概率踩雷，这一份横评可供你参考。</p>
     </a>
+    <a class="zl-nav-card" href="{{ '/zhuanlan/星河君的AI杂谈/' | relative_url }}" data-name="星河君的AI杂谈">
+      <h3>星河君的AI杂谈</h3>
+      <p>从 AI 的工作机制、日常闲聊到判断力，聊聊我们该如何理解和用好这个 AI 时代。</p>
+    </a>
   </div>
   <p class="zl-nav-empty" id="zlEmpty">未找到符合条件的专栏。</p>
 

@@ -206,3 +206,24 @@ html.theme-dark .news-pin {
   color: var(--ma-gold);
   background: rgba(255, 217, 138, 0.16);
 }
+
+/* ---------- 星河君的AI杂谈 ---------- */
+html.theme-dark .ai-panel,
+html.theme-dark .ai-article { border-color: var(--ma-line); }
+
+html.theme-dark .ai-article-list > li > a:hover,
+html.theme-dark .ai-article-list > li > a.is-active,
+html.theme-dark .ai-toc-link:hover,
+html.theme-dark .ai-toc-link.is-active {
+  background: rgba(255, 179, 71, 0.12);
+}
+
+html.theme-dark .ai-article-content > blockquote:first-child,
+html.theme-dark .ai-comment-rules {
+  background: rgba(255, 179, 71, 0.08);
+}
+
+html.theme-dark .ai-comment-rules,
+html.theme-dark .ai-panel {
+  border-color: var(--ma-line);
+}

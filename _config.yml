@@ -18,6 +18,17 @@ wide_layouts:
   - post
   - page
   - zhuanlan
+  - ai-column
+
+# GitHub Discussions 评论（giscus）
+# 仓库启用 Discussions、安装 giscus App 并创建“专栏评论”分类后，
+# 将 giscus.app 配置页生成的 Category ID 填入 giscus.category_id。
+giscus:
+  repo: "tony-he-xhxk/tony-he-xhxk.github.io"
+  repo_id: "R_kgDOT4cNxw"
+  category: "专栏评论"
+  category_id: "DIC_kwDOT4cNx84DJpuX"
+  comment_rules: "友善交流。禁止人身攻击、辱骂、歧视、广告刷屏与泄露隐私；作者保留删除、锁定或隐藏评论的权利。"
 
 # 构建配置（GitHub Pages 内置支持 jekyll-sitemap，自动生成 sitemap.xml）
 plugins:
@@ -28,4 +39,4 @@ permalink: /:year/:month/:day/:title/
 
 # 不发布到线上的文件（仅作为仓库内数据源供 GitHub Actions 解析）
 exclude:
-  - zhuanlan/美式咖啡评测数据.txt
+  - zhuanlan/美式咖啡横评/美式咖啡评测数据.txt

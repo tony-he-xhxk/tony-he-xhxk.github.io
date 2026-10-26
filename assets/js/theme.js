@@ -37,6 +37,9 @@
   function apply(theme) {
     var dark = theme === 'dark';
     root.classList.toggle('theme-dark', dark);
+    document.dispatchEvent(new CustomEvent('xh-theme-change', {
+      detail: { theme: dark ? 'dark' : 'light' }
+    }));
 
     /* 让手机浏览器状态栏跟着变色 */
     var meta = document.querySelector('meta[name="theme-color"]');

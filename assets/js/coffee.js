@@ -1,5 +1,5 @@
 /* 美式咖啡横评渲染脚本
- * 数据源：/assets/data/coffee_reviews.json（由 tools/parse_coffee.py 从评测数据.txt 生成）
+ * 数据源：/zhuanlan/美式咖啡横评/coffee_reviews.json（由 tools/parse_coffee.py 从评测数据.txt 生成）
  * 排序规则（见开发指南）：
  *   1. 区域顺序 = 数据文件出现顺序
  *   2. 区域内卡片按「综合得分」（该卡各次测评最高分）从高到低
@@ -9,7 +9,7 @@
   var mount = document.getElementById('coffeeReviews');
   if (!mount) return;
 
-  var DATA_URL = '/assets/data/coffee_reviews.json';
+  var DATA_URL = mount.getAttribute('data-src') || '/zhuanlan/美式咖啡横评/coffee_reviews.json';
 
   /* ---------- 热量参考横条分级（X 大卡，填充 X/250，≥250 满） ---------- */
   function kcalLevel(k) {
