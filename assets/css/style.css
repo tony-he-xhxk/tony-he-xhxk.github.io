@@ -968,7 +968,14 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
   align-items: start;
 }
 
-.ai-column-sidebar { min-width: 0; }
+.ai-column-sidebar {
+  position: sticky;
+  top: 82px;
+  align-self: start;
+  min-width: 0;
+  max-height: calc(100vh - 102px);
+  z-index: 2;
+}
 .ai-column-sidebar-left { order: 1; }
 .ai-article {
   order: 2;
@@ -981,9 +988,7 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 .ai-column-sidebar-right { order: 3; }
 
 .ai-panel {
-  position: sticky;
-  top: 82px;
-  max-height: calc(100vh - 102px);
+  max-height: inherit;
   overflow: auto;
   padding: 16px;
   background: var(--card);
@@ -1226,6 +1231,10 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 
   .ai-column-sidebar-left { order: 1; }
   .ai-column-sidebar-right { order: 2; }
+  .ai-column-sidebar {
+    position: static;
+    max-height: none;
+  }
   .ai-article { order: 3; padding: 27px 25px; }
 
   .ai-panel {
