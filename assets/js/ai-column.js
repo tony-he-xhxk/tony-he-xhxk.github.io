@@ -12,6 +12,7 @@
   var tocPanel = document.getElementById('aiTocPanel');
   var tocSidebar = document.querySelector('.ai-column-sidebar-right');
   var columnPanel = document.querySelector('.ai-column-sidebar-left .ai-panel');
+  var root = document.documentElement;
   var headings = content ? Array.prototype.slice.call(content.querySelectorAll('h2, h3, h4')) : [];
   var tocLinks = [];
 
@@ -68,14 +69,17 @@
         if (!target) return;
 
         event.preventDefault();
-        var panelBottom = tocSidebar.getBoundingClientRect().bottom;
-        var targetTop = window.scrollY + target.getBoundingClientRect().top - panelBottom - 16;
+        var sidebarRect = tocSidebar.getBoundingClientRect();
+        var fixedAtBottom = getComputedStyle(tocSidebar).position === 'fixed';
+        var targetOffset = fixedAtBottom ? 72 : sidebarRect.bottom + 16;
+        var targetTop = window.scrollY + target.getBoundingClientRect().top - targetOffset;
         var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({
           top: Math.max(0, targetTop),
           behavior: reducedMotion ? 'auto' : 'smooth'
         });
         history.pushState(null, '', '#' + target.id);
+        if (tocPanel) tocPanel.open = false;
       });
     });
 
@@ -104,12 +108,24 @@
     });
   }
 
-  function syncPanels() {
+  function syncPanels(initial) {
     var desktop = window.matchMedia('(min-width: 1100px)').matches;
     if (desktop) {
       if (columnPanel) columnPanel.open = true;
       if (tocPanel) tocPanel.open = true;
+    } else if (initial && tocPanel) {
+      tocPanel.open = false;
     }
+  }
+
+  function updateMobileTocSpace() {
+    if (!tocSidebar || !window.matchMedia('(max-width: 640px)').matches) {
+      root.style.removeProperty('--ai-mobile-toc-space');
+      return;
+    }
+
+    var height = Math.ceil(tocSidebar.getBoundingClientRect().height);
+    root.style.setProperty('--ai-mobile-toc-space', (height + 24) + 'px');
   }
 
   function currentTheme() {
@@ -153,12 +169,20 @@
   }
 
   buildToc();
-  syncPanels();
+  syncPanels(true);
+  updateMobileTocSpace();
   initGiscus();
 
   window.addEventListener('resize', function () {
-    syncPanels();
+    syncPanels(false);
+    updateMobileTocSpace();
   }, { passive: true });
+
+  if (tocPanel) {
+    tocPanel.addEventListener('toggle', function () {
+      window.requestAnimationFrame(updateMobileTocSpace);
+    });
+  }
 
   if (headings.length) {
     var ticking = false;

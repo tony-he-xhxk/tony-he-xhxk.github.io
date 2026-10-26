@@ -1276,6 +1276,24 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 @media (max-width: 640px) {
   .site-header .theme-toggle { flex: 0 0 28px; }
 
+  .ai-column-grid { padding-bottom: var(--ai-mobile-toc-space, 0px); }
+
+  .ai-column-sidebar-right {
+    position: fixed;
+    top: auto;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    left: 10px;
+    max-height: min(46vh, calc(100vh - 86px));
+    z-index: 20;
+  }
+
+  .ai-column-sidebar-right .ai-panel {
+    max-height: inherit;
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(31, 45, 61, .2);
+  }
+
   .ai-article { padding: 22px 17px; }
   .ai-article-header h1 { font-size: 26px; }
   .ai-article-content { line-height: 1.85; }
