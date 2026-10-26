@@ -10,6 +10,7 @@
   var tocList = document.getElementById('aiTocList');
   var tocEmpty = document.getElementById('aiTocEmpty');
   var tocPanel = document.getElementById('aiTocPanel');
+  var tocSidebar = document.querySelector('.ai-column-sidebar-right');
   var columnPanel = document.querySelector('.ai-column-sidebar-left .ai-panel');
   var headings = content ? Array.prototype.slice.call(content.querySelectorAll('h2, h3, h4')) : [];
   var tocLinks = [];
@@ -60,8 +61,21 @@
     });
 
     tocLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (tocPanel && window.matchMedia('(max-width: 1099px)').matches) tocPanel.open = false;
+      link.addEventListener('click', function (event) {
+        if (!tocSidebar || !window.matchMedia('(max-width: 1099px)').matches) return;
+
+        var target = document.getElementById(link.dataset.headingId);
+        if (!target) return;
+
+        event.preventDefault();
+        var panelBottom = tocSidebar.getBoundingClientRect().bottom;
+        var targetTop = window.scrollY + target.getBoundingClientRect().top - panelBottom - 16;
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: reducedMotion ? 'auto' : 'smooth'
+        });
+        history.pushState(null, '', '#' + target.id);
       });
     });
 
@@ -72,7 +86,9 @@
     if (!headings.length || !tocLinks.length) return;
 
     var current = headings[0];
-    var threshold = 130;
+    var tocRect = tocSidebar ? tocSidebar.getBoundingClientRect() : null;
+    var tocIsStuck = tocRect && tocRect.top <= 71;
+    var threshold = tocIsStuck ? tocRect.bottom + 24 : 130;
     headings.forEach(function (heading) {
       if (heading.getBoundingClientRect().top <= threshold) current = heading;
     });
@@ -88,13 +104,11 @@
     });
   }
 
-  function syncPanels(initial) {
+  function syncPanels() {
     var desktop = window.matchMedia('(min-width: 1100px)').matches;
     if (desktop) {
       if (columnPanel) columnPanel.open = true;
       if (tocPanel) tocPanel.open = true;
-    } else if (initial && tocPanel) {
-      tocPanel.open = false;
     }
   }
 
@@ -139,11 +153,11 @@
   }
 
   buildToc();
-  syncPanels(true);
+  syncPanels();
   initGiscus();
 
   window.addEventListener('resize', function () {
-    syncPanels(false);
+    syncPanels();
   }, { passive: true });
 
   if (headings.length) {
