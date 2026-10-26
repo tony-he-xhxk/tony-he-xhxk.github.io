@@ -1262,17 +1262,6 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 }
 
 @media (max-width: 640px) {
-  .site-header .nav {
-    flex-wrap: wrap;
-    row-gap: 7px;
-  }
-
-  .site-header .nav-links {
-    flex: 1 0 100%;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
   .site-header .theme-toggle { flex: 0 0 28px; }
 
   .ai-article { padding: 22px 17px; }
