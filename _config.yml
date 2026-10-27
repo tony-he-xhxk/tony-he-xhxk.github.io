@@ -10,6 +10,7 @@ content_license:
   full_name: "知识共享 署名—非商业性使用 4.0 国际许可协议"
   url: "https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans"
   author: "星河绫"
+  minimum_copy_length: 80
 
 # 正式域名（已绑定 GitHub Pages，Enforce HTTPS 已开启）
 url: "https://xingheling.cn"
