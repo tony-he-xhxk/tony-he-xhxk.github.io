@@ -136,9 +136,15 @@
     var range = selection.getRangeAt(0);
     var startEl = closestElement(selection.anchorNode);
     var endEl = closestElement(selection.focusNode);
-    var startSource = startEl && startEl.closest('[data-licensed-copy]');
-    var endSource = endEl && endEl.closest('[data-licensed-copy]');
-    if (!startSource || startSource !== endSource) return;
+    var copySources = document.querySelectorAll('[data-licensed-copy]');
+    var selectedSource = null;
+    for (var i = 0; i < copySources.length; i += 1) {
+      if (range.intersectsNode(copySources[i])) {
+        selectedSource = copySources[i];
+        break;
+      }
+    }
+    if (!selectedSource) return;
 
     var excludedControlSelector =
       '[data-license-exclude], script, style, input, textarea, select, button, ' +
