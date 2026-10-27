@@ -35,7 +35,7 @@ layout: default
   {% endif %}
   {% endif %}
 
-  <div class="post-content">
+  <div class="post-content" data-licensed-copy>
     {{ content }}
   </div>
 
@@ -44,6 +44,8 @@ layout: default
     📎 原文发表于 <a href="{{ page.source_url }}" target="_blank" rel="noopener">{{ page.source_url }}</a>
   </p>
   {% endif %}
+
+  {% include content-license.html %}
 
   <div class="post-nav">
     {% if page.previous %}<a class="prev" href="{{ page.previous.url }}">← {{ page.previous.title }}</a>{% endif %}

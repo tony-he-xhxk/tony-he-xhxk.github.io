@@ -32,9 +32,11 @@ layout: default
       {% endif %}
     </header>
 
-    <div class="post-content ai-article-content" id="aiArticleContent">
+    <div class="post-content ai-article-content" id="aiArticleContent" data-licensed-copy>
       {{ content }}
     </div>
+
+    {% include content-license.html %}
 
     <nav class="ai-article-footer" aria-label="文章翻页">
       {%- for item in column_pages %}

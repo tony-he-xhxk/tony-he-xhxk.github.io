@@ -648,6 +648,55 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 .post-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; font-size: 13px; flex-wrap: wrap; }
 .post-nav .back { color: var(--muted); }
 
+/* 内容许可：正文之后、文章导航之前 */
+.content-license {
+  margin-top: 24px;
+  padding: 15px 17px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: rgba(43, 179, 166, .045);
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.75;
+}
+.content-license p { margin: 0 0 7px; }
+.content-license p:last-of-type { margin-bottom: 0; }
+.content-license .content-license-title { color: var(--text); }
+.content-license a { color: var(--accent-dark); }
+.content-license .content-license-citation {
+  padding: 8px 10px;
+  border-radius: 7px;
+  background: rgba(43, 179, 166, .07);
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+.content-license-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.content-license-copy {
+  flex: 0 0 auto;
+  padding: 6px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent-dark);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.content-license-copy:hover { background: rgba(43, 179, 166, .1); }
+.content-license-copy:focus-visible {
+  outline: 3px solid rgba(43, 179, 166, .24);
+  outline-offset: 2px;
+}
+.content-license-status { color: var(--accent-dark); font-weight: 700; }
+.page > .content-license { margin-top: 26px; }
+
 /* 关于/404 页面 */
 .page { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px; }
 .page h1 { font-size: 22px; margin-bottom: 14px; }
@@ -668,6 +717,9 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
   color: var(--muted);
   font-size: 13px;
 }
+.footer-license { margin-top: 8px; font-size: 12px; }
+.footer-license a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.footer-license a:hover { color: var(--accent); }
 .footer-github {
   display: inline-flex;
   align-items: center;
@@ -1275,6 +1327,7 @@ html.theme-dark .theme-toggle .icon-moon { display: block; }
 
 @media (max-width: 640px) {
   .site-header .theme-toggle { flex: 0 0 28px; }
+  .content-license { padding: 13px 14px; }
 
   .ai-column-grid { padding-bottom: var(--ai-mobile-toc-space, 0px); }
 

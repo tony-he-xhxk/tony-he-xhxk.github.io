@@ -1,0 +1,29 @@
+{%- assign license_name = site.content_license.name | default: "CC BY-NC 4.0" -%}
+{%- assign license_full_name = site.content_license.full_name | default: "知识共享 署名—非商业性使用 4.0 国际许可协议" -%}
+{%- assign license_url = site.content_license.url | default: "https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" -%}
+{%- assign license_author = site.content_license.author | default: site.title -%}
+{%- assign license_page_title = page.title | default: site.title -%}
+{%- assign license_page_url = page.url | absolute_url -%}
+<aside
+  class="content-license"
+  data-content-license
+  data-license-exclude
+  data-license-name="{{ license_name | escape }}"
+  data-license-full-name="{{ license_full_name | escape }}"
+  data-license-link="{{ license_url | escape }}"
+  data-license-author="{{ license_author | escape }}"
+  data-license-title="{{ license_page_title | escape }}"
+  data-license-url="{{ license_page_url | escape }}"
+  aria-label="内容许可与引用方式"
+>
+  <p class="content-license-title"><strong>内容许可</strong></p>
+  <p>除特别注明外，本文原创文字采用 <a href="{{ license_url }}" rel="license">{{ license_name }}</a> 授权，仅限非商业用途。第三方图片、引文、他人作品及代码不适用本许可。</p>
+  <p class="content-license-citation">
+    来源：© {{ license_author }}《{{ license_page_title }}》，原文：<a href="{{ license_page_url }}">{{ license_page_url }}</a>，许可：<a href="{{ license_url }}" rel="license">{{ license_name }}</a>。仅限非商业用途；如作改编或节选，请注明修改。第三方素材与代码不适用本许可。
+  </p>
+  <div class="content-license-actions">
+    <span>复制正文时会自动附上这段来源与许可信息。</span>
+    <button type="button" class="content-license-copy" data-copy-license>复制引用声明</button>
+    <span class="content-license-status" role="status" aria-live="polite"></span>
+  </div>
+</aside>
