@@ -32,6 +32,6 @@ images:
 
 请下载zip文件并按照用户版README的指引完成初始化步骤，即可。
 
-**注意：**仓库根目录/蓝奏云根目录 的README是给你看的用户版README，技能包里的README是给WorkBuddy看的AI版README。
+**注意：**仓库根目录的README是给你看的用户版README，技能包里的README是给WorkBuddy看的AI版README。
 
 **声明：**本技能是用户技能，与WorkBuddy开发团队无关。本技能在GitHub上以MIT协议开源，可自由分发复制，星河君不考虑闭源或将其用于商业项目中。
