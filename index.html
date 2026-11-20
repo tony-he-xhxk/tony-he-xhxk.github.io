@@ -2,22 +2,36 @@
 layout: default
 wide: true
 ---
+<h1 class="visually-hidden">星河绫的个人主页</h1>
 <div class="home-grid">
 <section class="projects">
   <h2 class="section-title">我的项目</h2>
-  <div class="carousel">
-    <button class="carousel-arrow carousel-prev" aria-label="上一个项目">‹</button>
-    <div class="carousel-viewport">
-      <div class="projects-track" id="projectsTrack">
+  <div class="carousel-region" role="region" aria-roledescription="carousel" aria-label="精选项目">
+    <div class="carousel">
+      <button class="carousel-arrow carousel-prev" type="button" aria-controls="projectsTrack" aria-label="上一个项目">‹</button>
+      <div class="carousel-viewport">
+        <button class="carousel-pause" id="projectsPause" type="button" aria-controls="projectsTrack" aria-label="暂停自动切换" title="暂停自动切换">
+          <svg class="pause-icon" width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <rect x="4" y="3" width="4" height="14" rx="1"/>
+            <rect x="12" y="3" width="4" height="14" rx="1"/>
+          </svg>
+          <svg class="play-icon" width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" hidden>
+            <path d="M5 3.5v13l11-6.5z"/>
+          </svg>
+        </button>
+        <div class="projects-track" id="projectsTrack">
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 1 个">
     <a class="project-card" href="https://github.com/tony-he-xhxk/wb-memory-recall/releases/tag/v1.0.0" target="_blank" rel="noopener">
       <span class="project-badge">✦ 技能</span>
       <h3>wb-memory-recall</h3>
       <p>WorkBuddy的三层记忆补全技能，在每个新会话开头自动注入三层记忆，降低WorkBuddy反复踩同一个坑的概率。本技能为用户技能，与WorkBuddy开发团队无关。</p>
       <div class="project-cta">GitHub<span class="arrow">→</span></div>
     </a>
+    </div>
 
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 2 个">
     <div class="project-card project-card-split">
       <a class="project-info" href="https://animation.xingheling.cn/" target="_blank" rel="noopener">
         <span class="project-badge">✦ 动效</span>
@@ -29,7 +43,9 @@ wide: true
         <a class="project-cta project-cta-gh" href="https://github.com/tony-he-xhxk/xhl-anim" target="_blank" rel="noopener">GitHub<span class="arrow">→</span></a>
       </div>
     </div>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 3 个">
     <div class="project-card project-card-split">
       <a class="project-info" href="https://lantern.xingheling.cn/" target="_blank" rel="noopener">
         <span class="project-badge">✦ 灯谜</span>
@@ -41,7 +57,9 @@ wide: true
         <a class="project-cta project-cta-gh" href="https://github.com/tony-he-xhxk/lantern-riddle-bit" target="_blank" rel="noopener">GitHub<span class="arrow">→</span></a>
       </div>
     </div>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 4 个">
     <div class="project-card project-card-split">
       <a class="project-info" href="https://hotbench.xingheling.cn" target="_blank" rel="noopener">
         <span class="project-badge">✦ 实测</span>
@@ -53,7 +71,9 @@ wide: true
         <a class="project-cta project-cta-gh" href="https://github.com/tony-he-xhxk/HotBench" target="_blank" rel="noopener">GitHub<span class="arrow">→</span></a>
       </div>
     </div>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 5 个">
     <div class="project-card project-card-split">
       <a class="project-info" href="https://answers.xingheling.cn" target="_blank" rel="noopener">
         <span class="project-badge">✦ 答案</span>
@@ -65,7 +85,9 @@ wide: true
         <a class="project-cta project-cta-gh" href="https://github.com/tony-he-xhxk/book-of-answers-college" target="_blank" rel="noopener">GitHub<span class="arrow">→</span></a>
       </div>
     </div>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 6 个">
     <div class="project-card project-card-split">
       <a class="project-info" href="https://prti.xingheling.cn" target="_blank" rel="noopener">
         <span class="project-badge">✦ PRTI</span>
@@ -84,7 +106,9 @@ wide: true
         <a class="project-cta project-cta-gh" href="https://github.com/tony-he-xhxk/programming-personality-test" target="_blank" rel="noopener">GitHub<span class="arrow">→</span></a>
       </div>
     </div>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 7 个">
     <div class="project-card project-card-split">
       <a class="project-info" href="https://yeah-what-to-eat.xingheling.cn/" target="_blank" rel="noopener">
         <span class="project-badge">✦ 转盘</span>
@@ -96,21 +120,27 @@ wide: true
         <a class="project-cta project-cta-gh" href="https://github.com/tony-he-xhxk/yeah-what-to-eat" target="_blank" rel="noopener">GitHub<span class="arrow">→</span></a>
       </div>
     </div>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 8 个">
     <a class="project-card" href="https://github.com/tony-he-xhxk/FFmpegToolsGui" target="_blank" rel="noopener">
       <span class="project-badge">✦ 工具</span>
       <h3>FFmpegToolsGui</h3>
       <p>FFmpeg 的图形化工具界面，让命令行操作变得点一点就能用。</p>
       <div class="project-cta">GitHub<span class="arrow">→</span></div>
     </a>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 9 个">
     <a class="project-card" href="https://github.com/tony-he-xhxk/activitywatch-ai-classifier" target="_blank" rel="noopener">
       <span class="project-badge">✦ AI</span>
       <h3>ActivityWatch AI 分类器</h3>
       <p>给 ActivityWatch 的活动数据做 AI 自动分类，把时间账算明白。</p>
       <div class="project-cta">GitHub<span class="arrow">→</span></div>
     </a>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 10 个">
     <div class="project-card project-card-split">
       <a class="project-info" href="https://gpacalc.xingheling.cn" target="_blank" rel="noopener">
         <span class="project-badge">✦ GPA</span>
@@ -122,19 +152,24 @@ wide: true
         <a class="project-cta project-cta-gh" href="https://github.com/tony-he-xhxk/BIT-GPACalc-web-ui" target="_blank" rel="noopener">GitHub<span class="arrow">→</span></a>
       </div>
     </div>
+    </div>
 
+    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="第 11 个">
     <a class="project-card" href="https://github.com/tony-he-xhxk/BIT-GPACalc-Local" target="_blank" rel="noopener">
       <span class="project-badge">✦ GPA</span>
       <h3>BIT GPA 本地计算器（非官方）</h3>
       <p>一款面向 BIT 学生的 GPA 计算器，手动输入条目信息，本地读取写入条目，本地计算 GPA，无需联网。注意，此工具为非官方工具，不具任何官方效力。</p>
       <div class="project-cta">GitHub<span class="arrow">→</span></div>
     </a>
-
-      </div>
     </div>
-    <button class="carousel-arrow carousel-next" aria-label="下一个项目">›</button>
+
+        </div>
+      </div>
+      <button class="carousel-arrow carousel-next" type="button" aria-controls="projectsTrack" aria-label="下一个项目">›</button>
+    </div>
+    <div class="carousel-dots" id="projectsDots" role="group" aria-label="选择项目"></div>
+    <p class="visually-hidden" id="projectsStatus" role="status" aria-live="polite"></p>
   </div>
-  <div class="carousel-dots" id="projectsDots"></div>
 </section>
 
 <section class="posts">
@@ -199,3 +234,5 @@ wide: true
   </section>
 </aside>
 </div>
+
+<script src="{{ '/assets/js/carousel.js' | relative_url }}" defer></script>

@@ -20,8 +20,17 @@ layout: default
   {% if page.images %}
   <div class="post-gallery">
     {% for img in page.images %}
-    <a class="gallery-item" href="{{ img.src | relative_url }}" target="_blank" rel="noopener">
-      <img src="{{ img.src | relative_url }}" alt="{{ img.alt | default: page.title }}" loading="lazy">
+    {% assign image_filename = img.src | split: '/' | last %}
+    {% assign image_parent = img.src | remove: image_filename %}
+    {% assign image_thumb = image_parent | append: 'thumbs/' | append: image_filename | replace: '.png', '.webp' | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' %}
+    <a class="gallery-item" href="{{ img.src | relative_url }}" target="_blank" rel="noopener" aria-label="放大查看：{{ img.alt | default: page.title }}">
+      <img
+        src="{{ image_thumb | relative_url }}"
+        alt="{{ img.alt | default: page.title }}"
+        loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+        {% if forloop.first %}fetchpriority="high"{% endif %}
+        decoding="async"
+      >
     </a>
     {% endfor %}
   </div>
@@ -53,3 +62,5 @@ layout: default
     {% if page.next %}<a class="next" href="{{ page.next.url }}">{{ page.next.title }} →</a>{% endif %}
   </div>
 </article>
+
+<script src="{{ '/assets/js/lightbox.js' | relative_url }}" defer></script>

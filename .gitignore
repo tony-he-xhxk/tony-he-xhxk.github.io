@@ -1,6 +1,7 @@
 # 内部开发指南，不入库（避免被 Jekyll 发布为公开页面）
 友情网址.txt
 # 本地预览文件，不入库
+_previews/
 youqing-preview.html
 _preview_*.html
 # 专栏信息源目录，不入库（评测数据已迁至 zhuanlan/美式咖啡横评/美式咖啡评测数据.txt）

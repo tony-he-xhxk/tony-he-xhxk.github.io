@@ -16,9 +16,6 @@ content_license:
 url: "https://xingheling.cn"
 baseurl: ""
 
-# 每页展示帖子数
-paginate: 10
-
 # 宽屏布局（桌面端容器 1120px，与首页对齐）
 # 列在这里的 layout 会自动启用宽容器：帖子详情（post）、关于页（page）、专栏正文（zhuanlan）
 # 其他页面想变宽，在自己的 frontmatter 里加 wide: true
@@ -48,3 +45,4 @@ permalink: /:year/:month/:day/:title/
 # 不发布到线上的文件（仅作为仓库内数据源供 GitHub Actions 解析）
 exclude:
   - zhuanlan/美式咖啡横评/美式咖啡评测数据.txt
+  - work/

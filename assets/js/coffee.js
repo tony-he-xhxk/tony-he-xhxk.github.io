@@ -77,7 +77,7 @@
   function cardEl(card) {
     var article = el('article', 'cf-card');
     article.appendChild(el('h3', 'cf-card-name', card.name));
-    var reviews = card.reviews.slice().sort(function (a, b) { return b.score - a.score; });
+    var reviews = card.reviews.toSorted(function (a, b) { return b.score - a.score; });
     var wrap = el('div', 'cf-reviews');
     reviews.forEach(function (rv) { wrap.appendChild(reviewBlock(rv)); });
     article.appendChild(wrap);
@@ -93,7 +93,7 @@
   function regionEl(region) {
     var sec = el('section', 'cf-region');
     sec.appendChild(el('h2', 'cf-region-title', region.name));
-    var cards = region.cards.slice().sort(function (a, b) {
+    var cards = region.cards.toSorted(function (a, b) {
       return cardTopScore(b) - cardTopScore(a);
     });
     var wrap = el('div', 'cf-cards');

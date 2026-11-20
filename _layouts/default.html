@@ -3,22 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="text-scale" content="scale">
   <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ site.description }}">
+  {%- assign meta_description = site.description -%}
+  {%- if page.description -%}
+    {%- assign meta_description = page.description -%}
+  {%- elsif page.excerpt -%}
+    {%- assign meta_description = page.excerpt | strip_html | normalize_whitespace | truncate: 160 -%}
+  {%- endif -%}
+  <meta name="description" content="{{ meta_description | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ meta_description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  {% if page.images %}
+  <meta property="og:image" content="{{ page.images[0].src | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {% else %}
+  <meta name="twitter:card" content="summary">
+  {% endif %}
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ meta_description | escape }}">
   <link rel="license" href="{{ site.content_license.url }}">
+  <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/dark-theme.css' | relative_url }}">
   <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+  <script type="speculationrules">
+  {
+    "prefetch": [{
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "selector_matches": "[target=_blank]" } },
+          { "not": { "selector_matches": "[download]" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
 </head>
 <body class="{% if page.wide or site.wide_layouts contains page.layout %}is-wide{% endif %}">
+  <a class="skip-link" href="#main-content">跳到正文</a>
   <header class="site-header">
-    <nav class="nav">
+    <nav class="nav" aria-label="主导航">
       <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <div class="nav-links">
-        <a href="{{ '/' | relative_url }}">回家</a>
-        <a href="{{ '/youqing/' | relative_url }}">友情链接</a>
-        <a href="{{ '/about/' | relative_url }}">关于</a>
-        <button type="button" class="theme-toggle" id="themeToggle" aria-label="切换为深色模式" aria-pressed="false" title="切换为深色模式">
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>回家</a>
+        <a href="{{ '/youqing/' | relative_url }}"{% if page.url == '/youqing/' %} aria-current="page"{% endif %}>友情链接</a>
+        <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>关于</a>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="切换为深色模式" title="切换为深色模式">
           <svg class="icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4.2"/>
             <path d="M12 2.4v2.3M12 19.3v2.3M2.4 12h2.3M19.3 12h2.3M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/>
@@ -31,7 +69,7 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main class="container" id="main-content" tabindex="-1">
     {{ content }}
   </main>
 
@@ -40,8 +78,6 @@
     <p class="footer-license">除特别注明外，原创文字采用 <a href="{{ site.content_license.url }}" rel="license">{{ site.content_license.name }}</a> 授权；第三方素材与代码除外。</p>
   </footer>
 
-  <script src="{{ '/assets/js/carousel.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/content-license.js' | relative_url }}" defer></script>
 </body>
 </html>

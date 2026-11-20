@@ -92,7 +92,20 @@ html.theme-dark .carousel-arrow {
 }
 
 html.theme-dark .carousel-arrow:hover { background: #1b2550; }
-html.theme-dark .carousel-dots .dot { background: #38426f; }
+html.theme-dark .carousel-dots .dot::before { background: #56658f; }
+html.theme-dark .carousel-dots .dot[aria-current="true"]::before { background: var(--ma-gold); }
+html.theme-dark .carousel-dots .dot:focus-visible {
+  outline-color: rgba(255, 217, 138, .55);
+}
+html.theme-dark .carousel-pause {
+  border-color: rgba(255, 217, 138, .58);
+  background: rgba(11, 16, 38, .82);
+  color: var(--ma-moon);
+}
+html.theme-dark .carousel-pause:hover {
+  border-color: var(--ma-gold);
+  background: rgba(11, 16, 38, .96);
+}
 
 /* ---------- 搜索框、分页按钮、标签 ---------- */
 html.theme-dark .search-box input[type="search"] {
@@ -117,7 +130,7 @@ html.theme-dark .page-btn:hover {
   background: rgba(255, 179, 71, 0.16);
 }
 
-html.theme-dark .page-btn.active {
+html.theme-dark .page-btn[aria-current="page"] {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--ma-ink);
