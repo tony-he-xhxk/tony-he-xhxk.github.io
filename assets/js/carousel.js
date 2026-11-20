@@ -12,6 +12,7 @@
   var timer = null;
   var delay = 4000;
   var hovering = false;
+  var explicitPlay = false;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var userPaused = reduceMotion.matches;
 
@@ -54,7 +55,7 @@
   function start(force) {
     stop();
     if (userPaused || document.hidden) return;
-    if (!force && (hovering || region.matches(':focus-within'))) return;
+    if (!force && !explicitPlay && (hovering || region.matches(':focus-within'))) return;
     timer = window.setInterval(function () { goTo(index + 1, false); }, delay);
   }
 
@@ -72,9 +73,14 @@
 
   pauseButton.addEventListener('click', function () {
     userPaused = !userPaused;
+    explicitPlay = !userPaused;
     syncPauseButton();
-    if (userPaused) stop();
-    else start(true);
+    if (userPaused) {
+      stop();
+      return;
+    }
+    /* 等 click/focus 事件全部结束再启动，避免晚到的 focusin 清掉新定时器。 */
+    window.setTimeout(function () { start(true); }, 0);
   });
 
   var prevBtn = document.querySelector('.carousel-prev');
@@ -90,13 +96,15 @@
 
   region.addEventListener('mouseenter', function () {
     hovering = true;
-    stop();
+    if (!explicitPlay) stop();
   });
   region.addEventListener('mouseleave', function () {
     hovering = false;
     start();
   });
-  region.addEventListener('focusin', stop);
+  region.addEventListener('focusin', function () {
+    if (!explicitPlay) stop();
+  });
   region.addEventListener('focusout', function (event) {
     if (!region.contains(event.relatedTarget)) start();
   });
@@ -109,6 +117,7 @@
   reduceMotion.addEventListener('change', function (event) {
     if (event.matches) {
       userPaused = true;
+      explicitPlay = false;
       stop();
       syncPauseButton();
     }
